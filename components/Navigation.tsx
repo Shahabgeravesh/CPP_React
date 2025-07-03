@@ -3,14 +3,14 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 interface NavigationProps {
   currentView: string;
-  onNavigate: (view: 'home' | 'study' | 'stats' | 'settings') => void;
+  onNavigate: (view: 'chapters' | 'favorites' | 'dashboard' | 'settings') => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
   const navItems = [
-    { id: 'home', label: 'Home', icon: '🏠' },
-    { id: 'study', label: 'Study', icon: '📚' },
-    { id: 'stats', label: 'Stats', icon: '📊' },
+    { id: 'chapters', label: 'Chapters', icon: '📚' },
+    { id: 'favorites', label: 'Favorites', icon: '⭐' },
+    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
     { id: 'settings', label: 'Settings', icon: '⚙️' },
   ];
 
@@ -46,6 +46,10 @@ const styles = StyleSheet.create({
     borderTopColor: '#e2e8f0',
     paddingVertical: 10,
     paddingHorizontal: 20,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   navItem: {
     flex: 1,

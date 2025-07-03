@@ -41,7 +41,7 @@ interface StudySession {
 }
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<"home" | "study" | "stats" | "settings">("home");
+  const [currentView, setCurrentView] = useState<"chapters" | "favorites" | "dashboard" | "settings">("chapters");
   const [flashcards, setFlashcards] = useState<Flashcard[]>(flashcardsData.flashcards || []);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -113,40 +113,12 @@ const App: React.FC = () => {
         <Text style={styles.headerSubtitle}>Loaded: {flashcards.length} cards</Text>
       </View>
 
-      {/* Navigation Tabs */}
-      <View style={styles.navTabs}>
-        <TouchableOpacity 
-          style={[styles.navTab, currentView === 'home' && styles.activeTab]}
-          onPress={() => setCurrentView('home')}
-        >
-          <Text style={[styles.navText, currentView === 'home' && styles.activeText]}>Home</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.navTab, currentView === 'study' && styles.activeTab]}
-          onPress={() => setCurrentView('study')}
-        >
-          <Text style={[styles.navText, currentView === 'study' && styles.activeText]}>Study</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.navTab, currentView === 'stats' && styles.activeTab]}
-          onPress={() => setCurrentView('stats')}
-        >
-          <Text style={[styles.navText, currentView === 'stats' && styles.activeText]}>Stats</Text>
-        </TouchableOpacity>
-        <TouchableOpacity 
-          style={[styles.navTab, currentView === 'settings' && styles.activeTab]}
-          onPress={() => setCurrentView('settings')}
-        >
-          <Text style={[styles.navText, currentView === 'settings' && styles.activeText]}>Settings</Text>
-        </TouchableOpacity>
-      </View>
-
       {/* Content Area */}
       <View style={styles.content}>
-        {currentView === 'home' && (
-          <View style={styles.homeView}>
-            <Text style={styles.sectionTitle}>Welcome to ASIS CPP Flashcards</Text>
-            <Text style={styles.sectionSubtitle}>Master the Certified Protection Professional exam</Text>
+        {currentView === 'chapters' && (
+          <View style={styles.chaptersView}>
+            <Text style={styles.sectionTitle}>Chapters</Text>
+            <Text style={styles.sectionSubtitle}>Select a chapter to study</Text>
             
             <View style={styles.statsGrid}>
               <View style={styles.statCard}>
@@ -163,17 +135,6 @@ const App: React.FC = () => {
               </View>
             </View>
 
-            <TouchableOpacity 
-              style={styles.startButton}
-              onPress={() => setCurrentView('study')}
-            >
-              <Text style={styles.startButtonText}>Start Studying</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-
-        {currentView === 'study' && (
-          <View style={styles.studyView}>
             {/* Study Mode Selector */}
             <View style={styles.studyModeSelector}>
               <TouchableOpacity 
@@ -295,15 +256,43 @@ const App: React.FC = () => {
                         : 'No cards available'}
                     </Text>
                   </View>
-    </View>
-  );
+                </View>
+              );
             })()}
           </View>
         )}
 
-        {currentView === 'stats' && (
-          <View style={styles.statsView}>
-            <Text style={styles.sectionTitle}>Study Statistics</Text>
+        {currentView === 'favorites' && (
+          <View style={styles.favoritesView}>
+            <Text style={styles.sectionTitle}>Favorites</Text>
+            <Text style={styles.sectionSubtitle}>Your bookmarked cards</Text>
+            
+            {(() => {
+              const bookmarkedCards = flashcards.filter(card => card.isBookmarked);
+              return bookmarkedCards.length > 0 ? (
+                <FlatList
+                  data={bookmarkedCards}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({ item }) => (
+                    <View style={styles.favoriteCard}>
+                      <Text style={styles.favoriteQuestion}>{item.question}</Text>
+                      <Text style={styles.favoriteAnswer}>{item.answer}</Text>
+                    </View>
+                  )}
+                />
+              ) : (
+                <View style={styles.emptyState}>
+                  <Text style={styles.emptyStateText}>No bookmarked cards yet</Text>
+                  <Text style={styles.emptyStateSubtext}>Bookmark cards while studying to see them here</Text>
+                </View>
+              );
+            })()}
+          </View>
+        )}
+
+        {currentView === 'dashboard' && (
+          <View style={styles.dashboardView}>
+            <Text style={styles.sectionTitle}>Dashboard</Text>
             
             <View style={styles.statsContainer}>
               <View style={styles.statItem}>
@@ -369,6 +358,9 @@ const App: React.FC = () => {
           </View>
         )}
       </View>
+
+      {/* Bottom Navigation */}
+      <Navigation currentView={currentView} onNavigate={setCurrentView} />
     </SafeAreaView>
   );
 };
@@ -394,36 +386,13 @@ const styles = StyleSheet.create({
     opacity: 0.8,
     marginTop: 5,
   },
-  navTabs: {
-    flexDirection: 'row',
-    backgroundColor: '#f8f9fa',
-    borderBottomWidth: 1,
-    borderBottomColor: '#e9ecef',
-  },
-  navTab: {
-    flex: 1,
-    paddingVertical: 15,
-    alignItems: 'center',
-  },
-  activeTab: {
-    backgroundColor: '#007AFF',
-  },
-  navText: {
-    fontSize: 16,
-    color: '#6c757d',
-  },
-  activeText: {
-    color: 'white',
-    fontWeight: 'bold',
-  },
   content: {
     flex: 1,
     padding: 20,
+    paddingBottom: 80, // Add padding for bottom navigation
   },
-  homeView: {
+  chaptersView: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
   },
   sectionTitle: {
     fontSize: 24,
@@ -459,20 +428,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#6c757d',
     marginTop: 5,
-  },
-  startButton: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 30,
-    paddingVertical: 15,
-    borderRadius: 25,
-  },
-  startButtonText: {
-    color: 'white',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  studyView: {
-    flex: 1,
   },
   studyModeSelector: {
     flexDirection: 'row',
@@ -585,7 +540,48 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#6c757d',
   },
-  statsView: {
+  favoritesView: {
+    flex: 1,
+  },
+  emptyState: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  emptyStateText: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  emptyStateSubtext: {
+    fontSize: 14,
+    color: '#6c757d',
+  },
+  favoriteCard: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+    elevation: 2,
+  },
+  favoriteQuestion: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  favoriteAnswer: {
+    fontSize: 14,
+    color: '#6c757d',
+    lineHeight: 20,
+  },
+  dashboardView: {
     flex: 1,
   },
   statsContainer: {
