@@ -56,14 +56,14 @@ const App: React.FC = () => {
       id: "security-principles-practices",
       title: "Security Principles and Practices (22%)",
       description: "Security management, leadership, and business principles",
-      categories: ["security Management", "Business Principles", "Leadership Style", "Vision, Mission, Values"],
+      categories: ["Security Principles and Practices"],
       icon: "🛡️"
     },
     {
       id: "business-principles-practices",
       title: "Business Principles and Practices (15%)",
       description: "Business operations, financial management, and organizational strategy",
-      categories: ["Business Principles", "Asset Protection", "security Standards"],
+      categories: ["Asset Protection", "security Standards"],
       icon: "💼"
     },
     {
@@ -77,21 +77,21 @@ const App: React.FC = () => {
       id: "personnel-security",
       title: "Personnel Security (11%)",
       description: "Employee screening, background checks, and personnel protection",
-      categories: ["Personnel Security", "security Personnel"],
+      categories: ["Personnel Security"],
       icon: "👥"
     },
     {
       id: "physical-security",
       title: "Physical Security (16%)",
       description: "Physical protection systems, access control, and security technology",
-      categories: ["Physical Security", "system Design"],
+      categories: ["Physical Security"],
       icon: "🏢"
     },
     {
       id: "crisis-management",
       title: "Crisis Management (13%)",
       description: "Emergency response, business continuity, and crisis communication",
-      categories: ["Crisis Management", "ESRM", "Risk Assessment", "security Awareness"],
+      categories: ["Crisis Management"],
       icon: "🚨"
     }
   ];
