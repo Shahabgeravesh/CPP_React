@@ -63,7 +63,7 @@ const App: React.FC = () => {
       id: "business-principles-practices",
       title: "Business Principles and Practices (15%)",
       description: "Business operations, financial management, and organizational strategy",
-      categories: ["Asset Protection", "security Standards"],
+      categories: ["Business Principles and Practices"],
       icon: "💼"
     },
     {

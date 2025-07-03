@@ -166,7 +166,7 @@
       "id": "19",
       "question": "How is return on assets (ROA) calculated?",
       "answer": "ROA = (Net Income Before Taxes / Total Assets) × 100.",
-      "category": "Security Principles and Practices",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -211,7 +211,7 @@
       "id": "24",
       "question": "What are the key components of an ORMS policy?",
       "answer": "Commitment to safety, opportunity pursuit, legal compliance, and continual improvement.",
-      "category": "Security Principles and Practices",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -238,7 +238,7 @@
       "id": "27",
       "question": "What is the systems approach in ORMS?",
       "answer": "Examining interactions between components for holistic risk management.",
-      "category": "Security Principles and Practices",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -328,7 +328,7 @@
       "id": "37",
       "question": "What is the role of whistleblower protections?",
       "answer": "Policies ensuring employees can report unethical behavior without fear of retaliation.",
-      "category": "Security Principles and Practices",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -373,7 +373,7 @@
       "id": "42",
       "question": "What should be done with employees who refuse to follow policies despite security Awareness efforts?",
       "answer": "They must be disciplined appropriately to prevent unnecessary exposure to risks and liabilities.",
-      "category": "Security Principles and Practices",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -445,7 +445,7 @@
       "id": "50",
       "question": "What are the three traditional types of assets that security professionals protect?",
       "answer": "People, property, and information.",
-      "category": "Asset Protection",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -454,7 +454,7 @@
       "id": "51",
       "question": "What is a standard?",
       "answer": "A set of criteria, guidelines, and best practices that enhance the quality and reliability of products, services, or processes.",
-      "category": "security Standards",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -463,7 +463,7 @@
       "id": "52",
       "question": "What is Enterprise Security Risk Management (ESRM)?",
       "answer": "ESRM is a strategic approach to security management that aligns security practices with an organization\\s overall strategy using globally accepted risk management principles.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -499,7 +499,7 @@
       "id": "56",
       "question": "What types of entities can be considered organizations?",
       "answer": "Organizations include large corporations, medium-sized businesses, hospitals, not-for-profit agencies, museums, schools, political campaigns, sports teams, and music tours.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -508,7 +508,7 @@
       "id": "57",
       "question": "What are the three common characteristics of all organizations?",
       "answer": "1. Distinct Purpose – Expressed through mission statements and goals.\n2. People – Essential workforce performing necessary tasks.\n3. Deliberate Structure – Organized framework enabling work to be accomplished.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -517,7 +517,7 @@
       "id": "58",
       "question": "What does an organizations deliberate structure determine?",
       "answer": "It defines how members (both management and non-management) operate, whether through a bureaucratic structure with defined roles or a flexible matrix structure for rapid project completion.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -526,7 +526,7 @@
       "id": "59",
       "question": "Why are organizations adopting more flexible structures?",
       "answer": "The nature of work is changing, allowing tasks to be unbound by time or location, promoting agility in operations.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -535,7 +535,7 @@
       "id": "60",
       "question": "What is the key role of managers in an organization?",
       "answer": "Managers enable people to perform their work efficiently to achieve organizational goals.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -544,7 +544,7 @@
       "id": "61",
       "question": "Why are effective managers critical in an organization?",
       "answer": "They engage and coordinate people, address issues, and ensure that tasks are completed correctly to drive organizational success.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -562,7 +562,7 @@
       "id": "63",
       "question": "Why do effective managers matter at every level of an organization?",
       "answer": "They directly influence employee engagement, productivity, and the overall success of the company.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -571,7 +571,7 @@
       "id": "64",
       "question": "What did a Gallup Organization poll reveal about employee productivity and loyalty?",
       "answer": "The most significant variable in employee productivity and loyalty is the quality of the relationship between the employee and their manager, rather than pay, benefits, or workplace environment.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -580,7 +580,7 @@
       "id": "65",
       "question": "What are the consequences of poor management in an organization?",
       "answer": "Poor management leads to high employee turnover, whereas good management enhances engagement and significantly boosts financial performance.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -589,7 +589,7 @@
       "id": "66",
       "question": "What is the essence of management?",
       "answer": "Management involves coordinating and overseeing the work activities of others to ensure tasks are completed on time and efficiently.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -598,7 +598,7 @@
       "id": "67",
       "question": "What are the two primary aspects of management?",
       "answer": "Efficiency and effectiveness.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -607,7 +607,7 @@
       "id": "68",
       "question": "What is efficiency in management?",
       "answer": "Efficiency is about maximizing output while minimizing input, using resources such as people, time, and money in the most cost-effective way.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -616,7 +616,7 @@
       "id": "69",
       "question": "Why is efficiency important in business strategy?",
       "answer": "It ensures that all functions, including security, operate in a way that minimizes costs while achieving business objectives.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -634,7 +634,7 @@
       "id": "71",
       "question": "How do security departments contribute to business efficiency?",
       "answer": "They use benchmarking and standards to compare operations with industry leaders while ensuring resource use aligns with company expectations.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -643,7 +643,7 @@
       "id": "72",
       "question": "What is effectiveness in management?",
       "answer": "Effectiveness is the ability to achieve intended outcomes or goals, even if it comes at a higher cost.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -670,7 +670,7 @@
       "id": "75",
       "question": "What happens when management fails to balance efficiency and effectiveness?",
       "answer": "Poor management results in inefficiencies and ineffectiveness, while good management ensures goal achievement.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -679,7 +679,7 @@
       "id": "76",
       "question": "Why is it important to study how management has developed over time?",
       "answer": "As organizations evolve, understanding management\\s history helps in adapting to changes and improving performance.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -697,7 +697,7 @@
       "id": "78",
       "question": "What was the focus of Fayol management principles?",
       "answer": "His principles sought to describe what managers do and what constitutes good management practice.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -796,7 +796,7 @@
       "id": "89",
       "question": "How do the required managerial skills vary by organizational level?",
       "answer": "Lower-level managers require strong technical skills, mid-level managers need more interpersonal skills, and top-level managers must excel in conceptual skills.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -823,7 +823,7 @@
       "id": "92",
       "question": "What are interpersonal skills in management?",
       "answer": "Interpersonal skills involve relationship building, effective communication, trust-building, motivation, and managing people across different functions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -832,7 +832,7 @@
       "id": "93",
       "question": "Why is it important for employees to develop beyond technical skills?",
       "answer": "To move into higher management levels, employees must enhance their interpersonal and conceptual skills.",
-      "category": "Crisis Management",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -841,7 +841,7 @@
       "id": "94",
       "question": "What is the main role of management?",
       "answer": "Management copes with complexity by bringing order and consistency to key dimensions such as quality and profitability.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -850,7 +850,7 @@
       "id": "95",
       "question": "How does leadership differ from management?",
       "answer": "Leaders inspire confidence, drive change, set visions, and influence others, whereas managers maintain order and ensure consistency.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -859,7 +859,7 @@
       "id": "96",
       "question": "What makes leadership a paradox?",
       "answer": "Leadership is both an art and a science, involves stability and change, requires personal attributes and relationships, manages things and leads people, and blends transformational and transactional approaches.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -877,7 +877,7 @@
       "id": "98",
       "question": "Is leadership based on charisma or personality traits?",
       "answer": "No, leadership is not about charisma or exotic traits but is a complementary function to management that drives success in complex environments.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -904,7 +904,7 @@
       "id": "101",
       "question": "What are the three main leadership styles identified by researchers?",
       "answer": "Authoritarian, democratic, and laissez-faire.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -913,7 +913,7 @@
       "id": "102",
       "question": "Can a leader demonstrate more than one leadership style?",
       "answer": "Yes, leadership styles are not rigid; a leader can adapt their style depending on the situation.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -922,7 +922,7 @@
       "id": "103",
       "question": "What is the authoritarian leadership style?",
       "answer": "An authoritarian leader perceives subordinates as needing direction and control, determines and directs work, and requires all communication to go through them to maintain authority.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -931,7 +931,7 @@
       "id": "104",
       "question": "What are the positive outcomes of an authoritarian leadership style?",
       "answer": "It can lead to efficiency and productivity, especially in high-pressure situations, such as a senior security manager managing a major disaster.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -940,7 +940,7 @@
       "id": "105",
       "question": "What are the negative outcomes of an authoritarian leadership style?",
       "answer": "It minimizes employee development and growth, fosters dependence and submissiveness, and can lead to discontent, hostility, and aggression over time.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -949,7 +949,7 @@
       "id": "106",
       "question": "What is the democratic leadership style?",
       "answer": "A leadership style where leaders treat subordinates as capable of working independently, guiding rather than commanding tasks and outcomes.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -958,7 +958,7 @@
       "id": "107",
       "question": "What are the positive outcomes of a democratic leadership style?",
       "answer": "It fosters friendliness, higher morale, motivation, job satisfaction, commitment, and teamwork among group members.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -967,7 +967,7 @@
       "id": "108",
       "question": "What is the main drawback of the democratic leadership style?",
       "answer": "It requires more time and commitment from the leader, making work effective but often less efficient.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -976,7 +976,7 @@
       "id": "109",
       "question": "What is the laissez-faire leadership style?",
       "answer": "A \"non-leadership\" style where the leader ignores workers, shows ambivalence toward their motivations, and provides little to no direction.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -985,7 +985,7 @@
       "id": "110",
       "question": "What is a potential positive outcome of the laissez-faire leadership style?",
       "answer": "It can be effective when leading a high-performing group that thrives on independence and self-management.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -994,7 +994,7 @@
       "id": "111",
       "question": "What are the negative outcomes of the laissez-faire leadership style?",
       "answer": "It often leads to confusion, chaos, and failure, especially among less skilled employees who require direction and support.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1003,7 +1003,7 @@
       "id": "112",
       "question": "Why are management and leadership increasingly relevant to organizations today?",
       "answer": "Organizations face greater disruption and change due to factors such as technological advancements (\"death of distance\") and increased business competition.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1012,7 +1012,7 @@
       "id": "113",
       "question": "How have the concepts of management and leadership evolved over time?",
       "answer": "They have been long recognized as essential to organizational success and have adapted to changing business environments and challenges.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1021,7 +1021,7 @@
       "id": "114",
       "question": "Why are effective managers and leaders essential in organizations?",
       "answer": "They help overcome obstacles such as unclear goals, unclear direction, poor hiring, low motivation, and poor business development.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1030,7 +1030,7 @@
       "id": "115",
       "question": "How do managers and leaders contribute to organizational success?",
       "answer": "They provide a clear path forward, guiding both the organization and its people to achieve success.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1039,7 +1039,7 @@
       "id": "116",
       "question": "Why is strategy development challenging?",
       "answer": "strategy is based on assumptions and hypotheses about market evolution and competitor actions, which may be inaccurate, leading to unmet goals.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1048,7 +1048,7 @@
       "id": "117",
       "question": "What is the strategic management process?",
       "answer": "A sequential process of analyses and decisional choices aimed at crafting and executing strategies to achieve organizational goals.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1057,7 +1057,7 @@
       "id": "118",
       "question": "What are the five steps in the strategic management process?",
       "answer": "1. Establish a vision, mission, and core values.\n2. Set objectives for performance measurement.\n3. Craft a strategy to achieve objectives.\n4. Execute the strategy efficiently and effectively.\n5. Monitor performance and adjust as needed.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1066,7 +1066,7 @@
       "id": "119",
       "question": "Why are vision, mission, and values important in an organization?",
       "answer": "They guide company direction, align management decisions with strategy, and help employees understand organizational goals.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1075,7 +1075,7 @@
       "id": "120",
       "question": "Why must a companys vision statement be business-specific?",
       "answer": "Each business has a unique culture and strategic direction, which must be reflected in the vision to distinguish it from competitors.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1129,7 +1129,7 @@
       "id": "126",
       "question": "How do core values influence an organization?",
       "answer": "They shape company culture, guide employee behavior, and align with the company\\s vision, mission, and strategy.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1147,7 +1147,7 @@
       "id": "128",
       "question": "What does organizational culture encompass?",
       "answer": "It includes expectations, experiences, philosophy, and values that shape internal and external interactions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1174,7 +1174,7 @@
       "id": "131",
       "question": "What additional intangible assets are considered in modern assets protection?",
       "answer": "An organization\\s reputation, relationships, and creditworthiness.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1183,7 +1183,7 @@
       "id": "132",
       "question": "How has enterprise security risk management (ESRM) changed the approach to asset protection?",
       "answer": "It has shifted from implementing security programs to guiding asset owners, who are responsible for risk decisions related to their assets.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1201,7 +1201,7 @@
       "id": "134",
       "question": "How should security be viewed in an organization?",
       "answer": "As a value-adding element that guides asset owners in mitigating natural and man-made hazards.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1210,7 +1210,7 @@
       "id": "135",
       "question": "What types of security measures may be used in asset protection?",
       "answer": "A mix of physical, procedural, and electronic security measures.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1219,7 +1219,7 @@
       "id": "136",
       "question": "Why is it important for asset owners to understand their assets?",
       "answer": "Many asset owners lack a clear understanding of what their real assets are, making it essential to distinguish between tangible and intangible assets.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1228,7 +1228,7 @@
       "id": "137",
       "question": "What are tangible and intangible assets?",
       "answer": "Tangible assets can be seen, touched, or measured, while intangible assets have no physical form.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1237,7 +1237,7 @@
       "id": "138",
       "question": "Who is responsible for making decisions about mitigating risks to assets?",
       "answer": "Asset owners, with guidance from security professionals.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1246,7 +1246,7 @@
       "id": "139",
       "question": "What functions are incorporated within assets protection?",
       "answer": "Investigations, risk management, safety, quality/product assurance, compliance, and emergency management.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1255,7 +1255,7 @@
       "id": "140",
       "question": "What skills must a senior assets protection professional possess?",
       "answer": "strong collaboration and coordination skills, as well as a deep understanding of enterprise operations.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1264,7 +1264,7 @@
       "id": "141",
       "question": "What are the key components of an asset protection program?",
       "answer": "People, process, and technology.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1282,7 +1282,7 @@
       "id": "143",
       "question": "What are some modern influences on asset protection?",
       "answer": "Globalization, civil unrest, natural disasters, and the advent of the Internet.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1300,7 +1300,7 @@
       "id": "145",
       "question": "What was the most significant turning point in asset protection?",
       "answer": "The terrorist attacks of 11 September 2001.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1417,7 +1417,7 @@
       "id": "158",
       "question": "What are the primary purposes of an investigation in a corporate or organizational setting? (List at least three)",
       "answer": "Thoroughly documenting incidents (such as those reported to security staff)\nIdentifying the cause of undesirable situations where nefarious activity is suspected\nDocumenting and correlating facts surrounding any situation or allegation of misconduct",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1498,7 +1498,7 @@
       "id": "167",
       "question": "What are the five functions of management in investigations?",
       "answer": "Planning, organizing, directing, coordinating, and controlling.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1507,7 +1507,7 @@
       "id": "168",
       "question": "What are the three levels of investigative management?",
       "answer": "strategic Level High level management of the investigative unit ensuring alignment with company leadership and legal counsel Operational Level Deals with investigative policies, case management, reporting, quality control, and evidence handling.\nCase Level – Focuses on specific investigations, investigator assignments, and case management protocols.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1516,7 +1516,7 @@
       "id": "169",
       "question": "What is the focus of strategic-level investigative management?",
       "answer": "High-level oversight of investigations, ensuring compliance with corporate strategy, legal guidance, and resource allocation.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1525,7 +1525,7 @@
       "id": "170",
       "question": "What are key considerations at the strategic level of investigation management?",
       "answer": "Establishing attorney work product protection\nDesignating the head of the investigative function\nIdentifying the organizational structure\nDefining strategic goals and objectives\nAllocating resources effectively",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1534,7 +1534,7 @@
       "id": "171",
       "question": "What is the focus of operational-level investigative management?",
       "answer": "The technical and procedural aspects of investigations within a department.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1552,7 +1552,7 @@
       "id": "173",
       "question": "What is the focus of case-level investigative management?",
       "answer": "Managing individual investigations, including assigning investigators, selecting investigative techniques, and overseeing case protocols.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1579,7 +1579,7 @@
       "id": "176",
       "question": "Why should investigative objectives align with an organization tactical business plan?",
       "answer": "To ensure compatibility and effectiveness in addressing security and business risks.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1588,7 +1588,7 @@
       "id": "177",
       "question": "What factors determine whether an organization should have an internal investigative unit (IU) or outsource investigations?",
       "answer": "Frequency and complexity of investigative needs\nCost considerations (internal vs. outsourcing)\nRegulatory compliance requirements\nOrganizational size and mission",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1597,7 +1597,7 @@
       "id": "178",
       "question": "What is the primary goal of a compliance investigation?",
       "answer": "To provide guidance regarding possible or potential violations of regulatory requirements.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1615,7 +1615,7 @@
       "id": "180",
       "question": "What financial metric can be used to demonstrate the return on investment (ROI) of an investigative function?",
       "answer": "Restitution figures, recovery amounts, risk reduction, and process improvement metrics.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1642,7 +1642,7 @@
       "id": "183",
       "question": "Is there a typical organizational structure for investigative units in the corporate environment?",
       "answer": "No, the structure varies based on industry, company size, mission, and scope.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1678,7 +1678,7 @@
       "id": "187",
       "question": "What is the role of an investigative policy statement?",
       "answer": "It outlines investigation procedures, reporting channels, and coordination mechanisms.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1687,7 +1687,7 @@
       "id": "188",
       "question": "How do policy statements impact other departments in an organization?",
       "answer": "They provide guidance, such as directing HR on how to request background checks.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1705,7 +1705,7 @@
       "id": "190",
       "question": "Why is it important to develop a well-thought-out functional charter, policy statement, and objectives?",
       "answer": "It ensures the smooth introduction and long-term effectiveness of the investigative unit.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1732,7 +1732,7 @@
       "id": "193",
       "question": "If staffing needs are uncertain, what is the best approach?",
       "answer": "start small use outsourced resources and expand if needed.",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1777,7 +1777,7 @@
       "id": "198",
       "question": "What are essential physical resources for an investigative unit?",
       "answer": "Office space – Dedicated work areas\nEvidence storage – Secure and organized storage areas\nRecords and file storage – Confidential documentation\nInvestigative supplies and equipment – Surveillance tools, forensic kits\nPhysical investigative aids – Cameras, fingerprint kits\nOther equipment – Computers, databases, tracking tools",
-      "category": "Investigations",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1786,7 +1786,7 @@
       "id": "199",
       "question": "Besides human and physical resources, what other resources are critical for an investigative unit?",
       "answer": "Training – Continuous learning and skill development\nRelationships – Internal and external networking\nCommunications – Effective reporting and data sharing\nFinancial resources – Budget allocation and funding\nInformation assets – Access to databases and intelligence sources\nGeographic assets – Location-based investigative support",
-      "category": "Investigations",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1795,7 +1795,7 @@
       "id": "200",
       "question": "What are the four key management areas in investigations?",
       "answer": "Investigative functions\nInvestigative resources\nUnit management\nCase management",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1813,7 +1813,7 @@
       "id": "202",
       "question": "Why must IU managers understand how the investigative function fits into the organization?",
       "answer": "To ensure alignment with business objectives and influence decision-making.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1840,7 +1840,7 @@
       "id": "205",
       "question": "How can IU managers conserve financial resources?",
       "answer": "By leveraging liaison contacts and other organizational departments like IT, HR, legal, and finance.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1903,7 +1903,7 @@
       "id": "212",
       "question": "Why must an IU chief ensure compliance with legal regulations?",
       "answer": "Because investigations may involve multiple jurisdictions, different laws, and corporate policies.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1921,7 +1921,7 @@
       "id": "214",
       "question": "What are the different types of liaison in investigative management?",
       "answer": "Internal and external\nFormal and informal\nIndividual and organizational",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -1993,7 +1993,7 @@
       "id": "222",
       "question": "What is the most common type of investigation in organizations?",
       "answer": "Incident investigations",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2011,7 +2011,7 @@
       "id": "224",
       "question": "Why are incident investigations crucial in organizations?",
       "answer": "They document incidents, identify causes, and help mitigate risks.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2119,7 +2119,7 @@
       "id": "236",
       "question": "What is the purpose of compliance investigations?",
       "answer": "To protect the company from legal violations and ethical lapses.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2128,7 +2128,7 @@
       "id": "237",
       "question": "What two categories can compliance investigations fall into?",
       "answer": "Internal policy violations and government-mandated investigations.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2137,7 +2137,7 @@
       "id": "238",
       "question": "Why are compliance investigations growing in importance?",
       "answer": "Government regulations increasingly require internal compliance programs.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2236,7 +2236,7 @@
       "id": "249",
       "question": "How does due diligence help with market entry planning?",
       "answer": "By assessing risks when introducing products, entering new markets, or forming partnerships.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2389,7 +2389,7 @@
       "id": "266",
       "question": "Why is there no universal standard for evidence handling?",
       "answer": "Different nations, states, and agencies have their own rules and procedures.",
-      "category": "Investigations",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2722,7 +2722,7 @@
       "id": "303",
       "question": "Why is it difficult to examine every file on a computer system?",
       "answer": "The storage capacity of modern hard drives and servers makes it nearly impossible in a reasonable timeframe.",
-      "category": "Investigations",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2884,7 +2884,7 @@
       "id": "321",
       "question": "What are the essential requirements for physical surveillance?",
       "answer": "There must be something to observe.\nThere must be someone available to conduct the observation.",
-      "category": "Investigations",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2893,7 +2893,7 @@
       "id": "322",
       "question": "What factors contribute to effective physical surveillance?",
       "answer": "A clearly defined purpose and goals\nNo interference with what is being observed\nProper recording and documentation\nSupport for investigative objectives",
-      "category": "Investigations",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2902,7 +2902,7 @@
       "id": "323",
       "question": "How does electronic surveillance differ from physical surveillance?",
       "answer": "Electronic surveillance uses technology such as cameras and monitoring software to observe people, places, and activities, whereas physical surveillance relies on human observation.",
-      "category": "Investigations",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2983,7 +2983,7 @@
       "id": "332",
       "question": "What are the common characteristics of employee theft and fraud?",
       "answer": "Perpetrated by employees with access\nCommonly stolen assets include time, goods, supplies, scrap, and intellectual property\nLack of supervision and weak processes contribute to theft and fraud\nIndicators include secretive relationships, missing documents, substance abuse, and irregular work hours",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -2992,7 +2992,7 @@
       "id": "333",
       "question": "What did John Clark and Richard Hollinger identify as key hypotheses explaining employee theft?",
       "answer": "External economic pressures – Employees steal due to financial stress.\nYouth and work – Younger employees may be more prone to theft.\nOpportunity – Easy access increases the likelihood of theft.\nJob dissatisfaction – Employees who feel undervalued may rationalize stealing.\nSocial control – Weak workplace oversight can encourage dishonest behavior.",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3073,7 +3073,7 @@
       "id": "342",
       "question": "Why are cybersecurity incidents costly to organizations?",
       "answer": "They result in lost productivity, IT costs for cleanup, and possible data breaches.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3091,7 +3091,7 @@
       "id": "344",
       "question": "What security risks arise from remote work?",
       "answer": "Use of personal email and cloud storage for business data\nPrinting and storing sensitive company documents at home\nInsecure conference call lines\nLack of clean desk policies and privacy screens",
-      "category": "Investigations",
+      "category": "Crisis Management",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3109,7 +3109,7 @@
       "id": "346",
       "question": "What is the best prevention strategy for workplace violence?",
       "answer": "A thorough preemployment background investigation program.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3145,7 +3145,7 @@
       "id": "350",
       "question": "What role do businesses play in combating human trafficking?",
       "answer": "Conducting internal investigations to identify illicit activity\nMitigating reputational risks\nCollaborating with law enforcement, NGOs, and other organizations\nSupporting victim care, background checks, data searches, and surveillance",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3163,7 +3163,7 @@
       "id": "352",
       "question": "Why might businesses be invited to participate in human trafficking task forces?",
       "answer": "They provide unique perspectives, data access, and operational capabilities that assist law enforcement efforts.",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3397,7 +3397,7 @@
       "id": "378",
       "question": "What factors should be considered when planning an interview?",
       "answer": "Location\nTime factors\nQuestioning order\nQuestions to ask\nPersons present",
-      "category": "Investigations",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3874,7 +3874,7 @@
       "id": "431",
       "question": "Why are security employees frequently called to testify?",
       "answer": "Because of their direct involvement in incidents related to security and protection.",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3883,7 +3883,7 @@
       "id": "432",
       "question": "How can legal counsel assist security employees in court?",
       "answer": "They can provide preparation and guidance, but they may not always be able to intercede during testimony.",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -3892,7 +3892,7 @@
       "id": "433",
       "question": "Why is it important for security employees to understand courtroom testimony rules?",
       "answer": "To ensure they testify effectively, follow legal procedures, and avoid errors that could harm the case.",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4072,7 +4072,7 @@
       "id": "453",
       "question": "How should security employees present themselves while testifying?",
       "answer": "Professional, confident, personable, and knowledgeable while avoiding arrogance, evasion, or argumentation.",
-      "category": "Investigations",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4189,7 +4189,7 @@
       "id": "466",
       "question": "What are examples of background investigation and personnel screening techniques?",
       "answer": "Criminal record checks, employment verification, education verification, reference checks, drug testing, and social media analysis.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4243,7 +4243,7 @@
       "id": "472",
       "question": "What risk does an employer take by not implementing an adequate PBSV program?",
       "answer": "Hiring someone who could become a significant liability.",
-      "category": "Personnel Security",
+      "category": "Crisis Management",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4261,7 +4261,7 @@
       "id": "474",
       "question": "How does ensuring fairness in the PBSV process benefit an organization?",
       "answer": "It helps maintain ethical hiring practices and protects the organization from legal challenges.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4297,7 +4297,7 @@
       "id": "478",
       "question": "What are the four primary goals of an interview in the hiring process?",
       "answer": "1. Convey critical information to applicants.\n2. Gather missing information from applicants.\n3. Assess the candidate.\n4. Set company expectations.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4306,7 +4306,7 @@
       "id": "479",
       "question": "Why do applicants have an incentive to be truthful during interviews?",
       "answer": "Because background checks may reveal any false information they provide.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4432,7 +4432,7 @@
       "id": "493",
       "question": "What types of roles typically require more detailed background investigations?",
       "answer": "Roles with higher degrees of physical and logical access, authority over sensitive material, and knowledge of security or safety systems.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4441,7 +4441,7 @@
       "id": "494",
       "question": "Why do employers have a legal duty to conduct background investigations?",
       "answer": "To avoid hiring individuals who may pose a threat of harm to others or the organization.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4459,7 +4459,7 @@
       "id": "496",
       "question": "What factors should determine the extent of an additional background investigation?",
       "answer": "Proportionality to the role, legal permissibility, consistency, and necessity in the employee selection process.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4468,7 +4468,7 @@
       "id": "497",
       "question": "What are some possible sources of information used in detailed background investigations?",
       "answer": "Personal and business references, social media and OSINT searches, financial history, fitness for duty evaluations, and deception testing.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4477,7 +4477,7 @@
       "id": "498",
       "question": "Why should organizations review an applicants personal and business affiliations?",
       "answer": "To identify any conflicts of interest, security risks, or connections to unethical or illegal activities.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4486,7 +4486,7 @@
       "id": "499",
       "question": "How can social media and OSINT (Open-Source Intelligence) searches contribute to a background investigation?",
       "answer": "They help verify an applicant\\s character, reputation, and past behavior that may impact the workplace.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4495,7 +4495,7 @@
       "id": "500",
       "question": "Why might an employer review an applicants financial history?",
       "answer": "To assess financial stability and potential susceptibility to fraud, bribery, or financial misconduct.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4513,7 +4513,7 @@
       "id": "502",
       "question": "Why might an organization conduct deception testing as part of a background check?",
       "answer": "To identify inconsistencies in an applicant\\s statements or uncover potential dishonesty.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4522,7 +4522,7 @@
       "id": "503",
       "question": "What are the three most common resources used for conducting background investigations?",
       "answer": "security/asset protection departments, human resources departments, and outside consumer reporting or investigative agencies.",
-      "category": "Personnel Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4540,7 +4540,7 @@
       "id": "505",
       "question": "How does the ASIS standard define workplace violence?",
       "answer": "A spectrum of behaviors, including overt acts of violence, threats, and other conduct that generates a reasonable concern for safety from violence where a nexus exists between the behavior and physical safety of employees.",
-      "category": "Personnel Security",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4567,7 +4567,7 @@
       "id": "508",
       "question": "Why is a security risk assessment important for WPV prevention?",
       "answer": "It helps identify potential threats, vulnerabilities, and organizational readiness to respond to incidents.",
-      "category": "Personnel Security",
+      "category": "Crisis Management",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4576,7 +4576,7 @@
       "id": "509",
       "question": "What are some consequences of workplace violence for businesses?",
       "answer": "Liability, productivity loss, workplace morale issues, reputation damage, and financial costs such as increased insurance premiums and employee turnover.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4594,7 +4594,7 @@
       "id": "511",
       "question": "What preparedness measures should an organization take to prevent WPV?",
       "answer": "Implement policies and procedures, train employees, establish reporting protocols, and form alliances with law enforcement and mental health organizations.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4648,7 +4648,7 @@
       "id": "517",
       "question": "Why is organizational commitment critical in a WVPI program?",
       "answer": "It ensures top management support, funding, and resources to implement effective workplace violence prevention strategies.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4657,7 +4657,7 @@
       "id": "518",
       "question": "What is a key feature of a Workplace Violence (WPV) policy?",
       "answer": "It should prohibit all violence, threats, and behavior that could be interpreted as intent to cause harm.",
-      "category": "Personnel Security",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4684,7 +4684,7 @@
       "id": "521",
       "question": "What is the role of the Threat Management Team (TMT) in WPV prevention?",
       "answer": "To evaluate and respond to WPV incidents, manage reports, and oversee the WVPI program.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4711,7 +4711,7 @@
       "id": "524",
       "question": "Why is it important for the WVPI policy to provide multiple reporting avenues?",
       "answer": "It increases accessibility and encourages employees to report concerns without fear of retaliation.",
-      "category": "Personnel Security",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4747,7 +4747,7 @@
       "id": "528",
       "question": "What are some responsibilities of the Threat Management Team (TMT)?",
       "answer": "Incident management, emergency response protocols, training employees, anonymous reporting systems, and record keeping.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4774,7 +4774,7 @@
       "id": "531",
       "question": "What special considerations should organizations make for intimate partner violence (IPV) in the workplace?",
       "answer": "Employees should be encouraged to report IPV concerns, and security measures should be in place to protect affected employees.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4783,7 +4783,7 @@
       "id": "532",
       "question": "What are key steps in responding to a WPV crisis?",
       "answer": "Establish emergency roles, create warning systems, provide training, liaise with law enforcement, and designate an emergency operations center.",
-      "category": "Personnel Security",
+      "category": "Crisis Management",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4792,7 +4792,7 @@
       "id": "533",
       "question": "Why is a crisis management plan necessary for workplace violence incidents?",
       "answer": "It ensures an organized, practiced response to reduce harm and preserve safety.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4801,7 +4801,7 @@
       "id": "534",
       "question": "What should an organization prioritize immediately after a WPV incident?",
       "answer": "Life safety, evidence preservation, communication, and coordination of crisis management efforts.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4810,7 +4810,7 @@
       "id": "535",
       "question": "How should an organization handle post-incident business recovery?",
       "answer": "Focus on life safety, secure the area, communicate effectively, provide support services, and assess lessons learned for improvement.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4828,7 +4828,7 @@
       "id": "537",
       "question": "How do drugs of abuse affect the central nervous system?",
       "answer": "They impair the user\\s ability to think and process sensory stimuli, distorting perception of reality.",
-      "category": "Personnel Security",
+      "category": "Physical Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4855,7 +4855,7 @@
       "id": "540",
       "question": "What are some key steps organizations should take to create a drug-free workplace?",
       "answer": "Commit to a policy, set goals, assign responsibilities, enforce policies fairly, provide training, and offer psychological support.",
-      "category": "Personnel Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4882,7 +4882,7 @@
       "id": "543",
       "question": "How does the workplace provide a low-risk environment for substance abusers?",
       "answer": "Many supervisors are untrained or unwilling to confront the problem.",
-      "category": "Personnel Security",
+      "category": "Crisis Management",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4981,7 +4981,7 @@
       "id": "554",
       "question": "What are the two main tasks in system design planning and assessment?",
       "answer": "Identify critical assets, threats, vulnerabilities, risks, and functional requirements.\nAnalyze security requirements and develop solutions to mitigate risks.",
-      "category": "Physical Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -4999,7 +4999,7 @@
       "id": "556",
       "question": "What is the planning and assessment phase in system design?",
       "answer": "The first phase, where security needs, constraints, and risk factors are analyzed to establish a basis of design.",
-      "category": "Physical Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5008,7 +5008,7 @@
       "id": "557",
       "question": "What are the three key ingredients for successful planning?",
       "answer": "Multidisciplinary commitment – Team collaboration.\nTime and effort investment – Ensures accurate design.\nSound decision-making – Based on risk and asset analysis.",
-      "category": "Physical Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5026,7 +5026,7 @@
       "id": "559",
       "question": "What is the business case in security system design?",
       "answer": "A report that outlines:\nImpact of design on business\nInvestment requirements\nExpected cost savings\nReturn on investment (ROI) and other economic metrics",
-      "category": "Physical Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5053,7 +5053,7 @@
       "id": "562",
       "question": "What are the three key outcomes of the system planning phase?",
       "answer": "Identification of security needs and vulnerabilities.\nDevelopment of a cost-effective security strategy.\nCreation of a business case for security investments.",
-      "category": "Physical Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5071,7 +5071,7 @@
       "id": "564",
       "question": "What are two important considerations in designing a PPS (Physical Protection System)?",
       "answer": "Detection and delay are more practical than absolute prevention.\nProtection levels should match the most critical asset in a group.",
-      "category": "Physical Security",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5125,7 +5125,7 @@
       "id": "570",
       "question": "What is the purpose of protection-in-depth in security design?",
       "answer": "To create concentric security layers that make it progressively harder for an intruder to reach critical assets.",
-      "category": "Physical Security",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5143,7 +5143,7 @@
       "id": "572",
       "question": "What are the main phases in the design and documentation process?",
       "answer": "Design Development (30-50%) – Initial security planning.\nConstruction Documents (60-100%) – Final security specifications.",
-      "category": "Physical Security",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5224,7 +5224,7 @@
       "id": "581",
       "question": "What is an initial budget in the security planning phase?",
       "answer": "A conceptual cost estimate covering capital expenditures and recurring costs before final design work is completed.",
-      "category": "Physical Security",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5233,7 +5233,7 @@
       "id": "582",
       "question": "What is the primary goal of emergency management?",
       "answer": "To detect, contain, and deal with the immediate impact of an event.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5242,7 +5242,7 @@
       "id": "583",
       "question": "What are the four cyclical elements of emergency management?",
       "answer": "Mitigation, Preparedness, Response, and Recovery.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5251,7 +5251,7 @@
       "id": "584",
       "question": "Which term is often used as an umbrella term for risk management, security management, and crisis management?",
       "answer": "Resilience.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5260,7 +5260,7 @@
       "id": "585",
       "question": "What is the primary focus of crisis management?",
       "answer": "Dealing strategically with the numerous issues that could impact the viability of an organization.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5269,7 +5269,7 @@
       "id": "586",
       "question": "What differentiates crisis management from emergency management?",
       "answer": "Crisis management includes managing reputational and nonoperational aspects of a business beyond just emergency response.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5278,7 +5278,7 @@
       "id": "587",
       "question": "What is the ultimate goal of crisis management?",
       "answer": "To protect core assets such as reputation, brand, financial wellbeing, trust, physical and intellectual property, and key relationships.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5287,7 +5287,7 @@
       "id": "588",
       "question": "What is the role of a crisis management team?",
       "answer": "To evaluate and respond to disruptive events to ensure a coordinated response across all organizational functions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5296,7 +5296,7 @@
       "id": "589",
       "question": "What does business continuity management (BCM) focus on?",
       "answer": "Ensuring that business operations can continue or resume after a business interruption.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5305,7 +5305,7 @@
       "id": "590",
       "question": "What are some common business continuity strategies?",
       "answer": "Resumption in place, contracting out selected functions, and relocation of critical functions and personnel.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5314,7 +5314,7 @@
       "id": "591",
       "question": "What is the purpose of ISO Standard 22301:2019?",
       "answer": "To provide guidelines for security and resilience in business continuity management.",
-      "category": "Crisis Management",
+      "category": "Business Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5323,7 +5323,7 @@
       "id": "592",
       "question": "What are the key components of business continuity planning?",
       "answer": "Identifying critical business functions, risk assessments, recovery strategies, and testing and maintenance of the plan.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5332,7 +5332,7 @@
       "id": "593",
       "question": "Why is business continuity planning important?",
       "answer": "It ensures that an organization can continue operations during and after a crisis event.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5341,7 +5341,7 @@
       "id": "594",
       "question": "What is the first step in business continuity planning?",
       "answer": "Conducting a business impact analysis (BIA) to determine critical business functions and potential impacts.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5350,7 +5350,7 @@
       "id": "595",
       "question": "What role does crisis communication play in crisis management?",
       "answer": "It helps manage public perception and ensures consistent messaging during a crisis.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5359,7 +5359,7 @@
       "id": "596",
       "question": "What is mitigation in the context of emergency management?",
       "answer": "The process of putting protective measures in place to reduce the likelihood or impact of a disaster.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5368,7 +5368,7 @@
       "id": "597",
       "question": "What does preparedness involve in emergency management?",
       "answer": "Activities, programs, and systems developed before an incident to support mitigation, response, and recovery.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5377,7 +5377,7 @@
       "id": "598",
       "question": "What is the main objective of the response phase in emergency management?",
       "answer": "To execute the emergency plan and protect life and property.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5386,7 +5386,7 @@
       "id": "599",
       "question": "What happens during the recovery phase of emergency management?",
       "answer": "The organization re-establishes processes, resources, and capabilities to meet operational requirements.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5395,7 +5395,7 @@
       "id": "600",
       "question": "How does crisis management support business continuity operations?",
       "answer": "By ensuring strategic decision-making and coordinated responses across business functions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5422,7 +5422,7 @@
       "id": "603",
       "question": "Why is it essential for employees to be trained in crisis reporting and escalation?",
       "answer": "To ensure a quick and effective response when a crisis occurs.",
-      "category": "Crisis Management",
+      "category": "Investigations",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5431,7 +5431,7 @@
       "id": "604",
       "question": "What does a business impact analysis (BIA) assess?",
       "answer": "The potential consequences of business interruptions and the timeframes for recovery.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5440,7 +5440,7 @@
       "id": "605",
       "question": "How does an organization determine which functions are critical in business continuity planning?",
       "answer": "By evaluating the financial, operational, and reputational impact of their disruption.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5449,7 +5449,7 @@
       "id": "606",
       "question": "What is the significance of DRI International Professional Practices for Business Continuity Management?",
       "answer": "It provides a widely accepted framework for business continuity planning and implementation.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5458,7 +5458,7 @@
       "id": "607",
       "question": "What is the role of executive leadership in crisis management?",
       "answer": "Making strategic decisions to minimize business and reputational impact.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5467,7 +5467,7 @@
       "id": "608",
       "question": "What is an example of a reputational crisis that requires crisis management?",
       "answer": "A product recall due to safety concerns.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5476,7 +5476,7 @@
       "id": "609",
       "question": "How does an organization test the effectiveness of its business continuity plan?",
       "answer": "By conducting drills, simulations, and tabletop exercises.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5485,7 +5485,7 @@
       "id": "610",
       "question": "Why should organizations integrate business continuity into their corporate culture?",
       "answer": "To ensure proactive preparedness and resilience in the face of disruptions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5494,7 +5494,7 @@
       "id": "611",
       "question": "What is the key difference between disaster recovery and business continuity?",
       "answer": "Disaster recovery focuses on restoring IT systems, while business continuity ensures overall business operations resume.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5512,7 +5512,7 @@
       "id": "613",
       "question": "How does crisis management help protect brand trust?",
       "answer": "By managing communication and response efforts to maintain stakeholder confidence.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5521,7 +5521,7 @@
       "id": "614",
       "question": "What is an example of a non-physical crisis that requires crisis management?",
       "answer": "A regulatory investigation into the company's business practices.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5539,7 +5539,7 @@
       "id": "616",
       "question": "Why is coordination among departments critical in crisis management?",
       "answer": "To ensure a unified response and avoid conflicting actions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5548,7 +5548,7 @@
       "id": "617",
       "question": "What should an organization do immediately after a crisis is resolved?",
       "answer": "Conduct a post-crisis evaluation to identify lessons learned and improve future responses.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5557,7 +5557,7 @@
       "id": "618",
       "question": "What type of training is crucial for crisis response teams?",
       "answer": "scenario-based training that simulates potential crisis events.",
-      "category": "Crisis Management",
+      "category": "Personnel Security",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5566,7 +5566,7 @@
       "id": "619",
       "question": "What role does technology play in business continuity?",
       "answer": "Ensuring that communication and critical business systems remain operational.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5602,7 +5602,7 @@
       "id": "623",
       "question": "What does the ASIS/BSI Business Continuity Management System standard provide?",
       "answer": "A structured approach to developing and maintaining a business continuity program.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5611,7 +5611,7 @@
       "id": "624",
       "question": "Why is flexibility important in business continuity planning?",
       "answer": "To adapt to different types of crises and evolving threats.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5629,7 +5629,7 @@
       "id": "626",
       "question": "What is an example of a cyber-based crisis requiring business continuity planning?",
       "answer": "A ransomware attack that shuts down an organization\\s IT infrastructure.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5638,7 +5638,7 @@
       "id": "627",
       "question": "What type of insurance can help mitigate financial losses from a crisis event?",
       "answer": "Business interruption insurance.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5647,7 +5647,7 @@
       "id": "628",
       "question": "What is a key characteristic of a successful crisis management program?",
       "answer": "Cross-functional collaboration and clear roles and responsibilities.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
@@ -5656,7 +5656,7 @@
       "id": "629",
       "question": "How does business continuity support long-term organizational resilience?",
       "answer": "By ensuring that critical operations can continue despite disruptions.",
-      "category": "Crisis Management",
+      "category": "Security Principles and Practices",
       "difficulty": "medium",
       "isBookmarked": false,
       "reviewCount": 0
