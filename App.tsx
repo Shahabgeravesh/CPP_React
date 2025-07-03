@@ -371,10 +371,6 @@ const App: React.FC = () => {
             <Text style={styles.statNumber}>{flashcards.length}</Text>
             <Text style={styles.statLabel}>Total Cards</Text>
           </View>
-          <View style={styles.statItem}>
-            <Text style={styles.statNumber}>{flashcards.filter(card => card.isBookmarked).length}</Text>
-            <Text style={styles.statLabel}>Bookmarked</Text>
-          </View>
         </View>
       </LinearGradient>
 
@@ -680,38 +676,83 @@ const App: React.FC = () => {
           <ScrollView style={styles.dashboardScrollView} showsVerticalScrollIndicator={false}>
             <Text style={styles.sectionTitle}>Dashboard</Text>
             
-            <View style={styles.statsContainer}>
-              <View style={styles.statItem}>
-                <Text style={styles.statLabel}>Total Study Sessions</Text>
-                <Text style={styles.statValue}>{studySessions.length}</Text>
+            {/* Overall Progress Summary */}
+            <View style={styles.dashboardStatsGrid}>
+              <View style={styles.dashboardStatCard}>
+                <Text style={styles.dashboardStatNumber}>{flashcards.length}</Text>
+                <Text style={styles.dashboardStatLabel}>Total Cards</Text>
               </View>
-              
-              <View style={styles.statItem}>
-                <Text style={styles.statLabel}>Bookmarked Cards</Text>
-                <Text style={styles.statValue}>{flashcards.filter(card => card.isBookmarked).length}</Text>
+              <View style={styles.dashboardStatCard}>
+                <Text style={styles.dashboardStatNumber}>{flashcards.filter(card => card.isMastered).length}</Text>
+                <Text style={styles.dashboardStatLabel}>Mastered</Text>
               </View>
-              
-              <View style={styles.statItem}>
-                <Text style={styles.statLabel}>Total Cards</Text>
-                <Text style={styles.statValue}>{flashcards.length}</Text>
+              <View style={styles.dashboardStatCard}>
+                <Text style={styles.dashboardStatNumber}>{flashcards.filter(card => card.isBookmarked).length}</Text>
+                <Text style={styles.dashboardStatLabel}>Bookmarked</Text>
+              </View>
+              <View style={styles.dashboardStatCard}>
+                <Text style={styles.dashboardStatNumber}>{flashcards.filter(card => card.reviewCount > 0 && card.masteryLevel === 0).length}</Text>
+                <Text style={styles.dashboardStatLabel}>Need Review</Text>
               </View>
             </View>
 
-            {studySessions.length > 0 && (
-              <View style={styles.recentSessions}>
-                <Text style={styles.sectionSubtitle}>Recent Sessions</Text>
-                {studySessions.slice(-5).map((item, index) => (
-                  <View key={index} style={styles.sessionItem}>
-                    <Text style={styles.sessionDate}>
-                      {new Date(item.date).toLocaleDateString()}
-                    </Text>
-                    <Text style={styles.sessionStats}>
-                      {item.cardsReviewed} cards • {item.correctAnswers} correct
-                    </Text>
+            {/* Chapter Progress */}
+            <View style={styles.chapterProgressSection}>
+              <Text style={styles.sectionSubtitle}>Chapter Progress</Text>
+              {chapters.map((chapter) => {
+                const chapterCards = getChapterCards(chapter.id);
+                const masteredCards = chapterCards.filter(card => card.isMastered).length;
+                const totalCards = chapterCards.length;
+                const progressPercentage = totalCards > 0 ? (masteredCards / totalCards) * 100 : 0;
+                const needReviewCards = chapterCards.filter(card => card.reviewCount > 0 && card.masteryLevel === 0).length;
+                
+                return (
+                  <View key={chapter.id} style={styles.chapterProgressCard}>
+                    <View style={styles.chapterProgressHeader}>
+                      <View style={styles.chapterProgressInfo}>
+                        <Text style={styles.chapterProgressTitle}>{chapter.title}</Text>
+                        <Text style={styles.chapterProgressSubtitle}>
+                          {masteredCards}/{totalCards} mastered
+                        </Text>
+                      </View>
+                      <View style={styles.chapterProgressStats}>
+                        <Text style={styles.chapterProgressPercentage}>
+                          {Math.round(progressPercentage)}%
+                        </Text>
+                      </View>
+                    </View>
+                    
+                    <View style={styles.chapterProgressBar}>
+                      <View 
+                        style={[
+                          styles.chapterProgressFill, 
+                          { width: `${progressPercentage}%` }
+                        ]} 
+                      />
+                    </View>
+                    
+                    <View style={styles.chapterProgressDetails}>
+                      <View style={styles.chapterProgressDetail}>
+                        <Text style={styles.chapterProgressDetailLabel}>Need Review:</Text>
+                        <Text style={[styles.chapterProgressDetailValue, needReviewCards > 0 && styles.needReviewHighlight]}>
+                          {needReviewCards}
+                        </Text>
+                      </View>
+                      <View style={styles.chapterProgressDetail}>
+                        <Text style={styles.chapterProgressDetailLabel}>Bookmarked:</Text>
+                        <Text style={styles.chapterProgressDetailValue}>
+                          {chapterCards.filter(card => card.isBookmarked).length}
+                        </Text>
+                      </View>
+                    </View>
                   </View>
-                ))}
-              </View>
-            )}
+                );
+              })}
+            </View>
+
+
+
+
           </ScrollView>
         )}
 
@@ -777,13 +818,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 20,
   },
-  statItem: {
-    alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-    borderRadius: 12,
-    padding: 15,
-    minWidth: 80,
-  },
+
   statNumber: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -1191,6 +1226,222 @@ const styles = StyleSheet.create({
   },
   dashboardScrollView: {
     flex: 1,
+  },
+  // Enhanced Dashboard Styles
+  dashboardStatsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    marginBottom: 30,
+    gap: 10,
+  },
+  dashboardStatCard: {
+    backgroundColor: '#f8f9fa',
+    borderRadius: 12,
+    padding: 15,
+    minWidth: '48%',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  dashboardStatNumber: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#1e3a8a',
+    marginBottom: 5,
+  },
+  dashboardStatLabel: {
+    fontSize: 12,
+    color: '#6c757d',
+    textAlign: 'center',
+  },
+  chapterProgressSection: {
+    marginBottom: 30,
+  },
+  chapterProgressCard: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 15,
+    marginBottom: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  chapterProgressHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  chapterProgressInfo: {
+    flex: 1,
+  },
+  chapterProgressTitle: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#1e3a8a',
+    marginBottom: 2,
+  },
+  chapterProgressSubtitle: {
+    fontSize: 12,
+    color: '#6c757d',
+  },
+  chapterProgressStats: {
+    alignItems: 'flex-end',
+  },
+  chapterProgressPercentage: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#007AFF',
+  },
+  chapterProgressBar: {
+    height: 8,
+    backgroundColor: '#e9ecef',
+    borderRadius: 4,
+    overflow: 'hidden',
+    marginBottom: 10,
+  },
+  chapterProgressFill: {
+    height: '100%',
+    backgroundColor: '#007AFF',
+    borderRadius: 4,
+  },
+  chapterProgressDetails: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  chapterProgressDetail: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  chapterProgressDetailLabel: {
+    fontSize: 12,
+    color: '#6c757d',
+    marginRight: 5,
+  },
+  chapterProgressDetailValue: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    color: '#495057',
+  },
+  needReviewHighlight: {
+    color: '#dc3545',
+  },
+  studyInsightsSection: {
+    marginBottom: 30,
+  },
+  insightsGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    gap: 10,
+  },
+  insightCard: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 15,
+    minWidth: '48%',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  insightTitle: {
+    fontSize: 12,
+    color: '#6c757d',
+    marginBottom: 5,
+    textAlign: 'center',
+  },
+  insightValue: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1e3a8a',
+    marginBottom: 2,
+  },
+  insightSubtext: {
+    fontSize: 10,
+    color: '#6c757d',
+    textAlign: 'center',
+  },
+  recentActivitySection: {
+    marginBottom: 30,
+  },
+  activityCard: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 15,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  activityHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 5,
+  },
+  activityDate: {
+    fontSize: 14,
+    fontWeight: 'bold',
+    color: '#1e3a8a',
+  },
+  activityAccuracy: {
+    fontSize: 14,
+    fontWeight: 'bold',
+  },
+  activityStats: {
+    fontSize: 12,
+    color: '#6c757d',
+  },
+  quickActionsSection: {
+    marginBottom: 30,
+  },
+  quickActionsGrid: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  quickActionButton: {
+    flex: 1,
+    backgroundColor: '#007AFF',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  quickActionText: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: 'bold',
   },
 });
 
