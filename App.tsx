@@ -47,16 +47,73 @@ const App: React.FC = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [studyMode, setStudyMode] = useState<"all" | "bookmarked" | "difficult">("all");
   const [studySessions, setStudySessions] = useState<StudySession[]>([]);
+  const [selectedChapter, setSelectedChapter] = useState<string | null>(null);
+  const [showChapterDetails, setShowChapterDetails] = useState(false);
+
+  // Define the 6 main chapters with their associated categories
+  const chapters = [
+    {
+      id: "security-management",
+      title: "Security Management",
+      description: "Security leadership and business principles",
+      categories: ["security Management", "Business Principles", "Leadership Style"],
+      icon: "🛡️"
+    },
+    {
+      id: "vision-mission-values",
+      title: "Vision, Mission & Values",
+      description: "Organizational strategy and culture",
+      categories: ["Vision, Mission, Values"],
+      icon: "🎯"
+    },
+    {
+      id: "asset-protection",
+      title: "Asset Protection",
+      description: "Physical and personnel security",
+      categories: ["Asset Protection", "Physical Security", "Personnel Security"],
+      icon: "🔒"
+    },
+    {
+      id: "security-standards",
+      title: "Security Standards",
+      description: "Standards, ESRM, and risk assessment",
+      categories: ["security Standards", "ESRM", "Risk Assessment"],
+      icon: "📋"
+    },
+    {
+      id: "security-awareness",
+      title: "Security Awareness",
+      description: "Training and awareness programs",
+      categories: ["security Awareness"],
+      icon: "📚"
+    },
+    {
+      id: "operations",
+      title: "Operations",
+      description: "Investigations, system design, and crisis management",
+      categories: ["Investigations", "system Design", "Crisis Management", "security Personnel"],
+      icon: "⚙️"
+    }
+  ];
+
+  // Get flashcards for a specific chapter
+  const getChapterCards = (chapterId: string) => {
+    const chapter = chapters.find(ch => ch.id === chapterId);
+    if (!chapter) return [];
+    return flashcards.filter(card => chapter.categories.includes(card.category));
+  };
 
   // Filter flashcards based on study mode
   const getFilteredCards = () => {
+    let cards = selectedChapter ? getChapterCards(selectedChapter) : flashcards;
+    
     switch (studyMode) {
       case 'bookmarked':
-        return flashcards.filter(card => card.isBookmarked);
+        return cards.filter(card => card.isBookmarked);
       case 'difficult':
-        return flashcards.filter(card => card.difficulty === 'hard');
+        return cards.filter(card => card.difficulty === 'hard');
       default:
-        return flashcards;
+        return cards;
     }
   };
 
@@ -117,148 +174,194 @@ const App: React.FC = () => {
       <View style={styles.content}>
         {currentView === 'chapters' && (
           <View style={styles.chaptersView}>
-            <Text style={styles.sectionTitle}>Chapters</Text>
-            <Text style={styles.sectionSubtitle}>Select a chapter to study</Text>
-            
-            <View style={styles.statsGrid}>
-              <View style={styles.statCard}>
-                <Text style={styles.statNumber}>{flashcards.length}</Text>
-                <Text style={styles.statLabel}>Total Cards</Text>
-              </View>
-              <View style={styles.statCard}>
-                <Text style={styles.statNumber}>{flashcards.filter(card => card.isBookmarked).length}</Text>
-                <Text style={styles.statLabel}>Bookmarked</Text>
-              </View>
-              <View style={styles.statCard}>
-                <Text style={styles.statNumber}>{studySessions.length}</Text>
-                <Text style={styles.statLabel}>Study Sessions</Text>
-              </View>
-            </View>
-
-            {/* Study Mode Selector */}
-            <View style={styles.studyModeSelector}>
-              <TouchableOpacity 
-                style={[styles.modeButton, studyMode === 'all' && styles.activeMode]}
-                onPress={() => setStudyMode('all')}
-              >
-                <Text style={[styles.modeText, studyMode === 'all' && styles.activeModeText]}>All Cards</Text>
-              </TouchableOpacity>
-              <TouchableOpacity 
-                style={[styles.modeButton, studyMode === 'bookmarked' && styles.activeMode]}
-                onPress={() => setStudyMode('bookmarked')}
-              >
-                <Text style={[styles.modeText, studyMode === 'bookmarked' && styles.activeModeText]}>Bookmarked</Text>
-              </TouchableOpacity>
-              <TouchableOpacity 
-                style={[styles.modeButton, studyMode === 'difficult' && styles.activeMode]}
-                onPress={() => setStudyMode('difficult')}
-              >
-                <Text style={[styles.modeText, studyMode === 'difficult' && styles.activeModeText]}>Difficult</Text>
-              </TouchableOpacity>
-            </View>
-
-            {/* Flashcard Display */}
-            {(() => {
-              const filteredCards = getFilteredCards();
-              return filteredCards.length > 0 ? (
-                <View style={styles.cardContainer}>
-                  <View style={styles.card}>
-                    <Text style={styles.cardQuestion}>
-                      {filteredCards[currentCardIndex]?.question}
-                    </Text>
+            {!showChapterDetails ? (
+              // Chapter List View
+              <>
+                <Text style={styles.sectionTitle}>Chapters</Text>
+                <Text style={styles.sectionSubtitle}>Select a chapter to study</Text>
+                
+                <FlatList
+                  data={chapters}
+                  keyExtractor={(item) => item.id}
+                  renderItem={({ item }) => {
+                    const chapterCards = getChapterCards(item.id);
+                    const bookmarkedCount = chapterCards.filter(card => card.isBookmarked).length;
                     
-                    {showAnswer && (
-                      <View style={styles.answerContainer}>
-                        <Text style={styles.answerLabel}>Answer:</Text>
-                        <Text style={styles.cardAnswer}>
-                          {filteredCards[currentCardIndex]?.answer}
-                        </Text>
-                      </View>
-                    )}
-
-                    <View style={styles.cardActions}>
+                    return (
                       <TouchableOpacity 
-                        style={styles.bookmarkButton}
+                        style={styles.chapterCard}
                         onPress={() => {
-                          const currentCard = filteredCards[currentCardIndex];
-                          const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
-                          const updatedCards = [...flashcards];
-                          updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
-                          setFlashcards(updatedCards);
-                          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                        }}
-                      >
-                        <Text style={styles.bookmarkButtonText}>
-                          {filteredCards[currentCardIndex]?.isBookmarked ? '★' : '☆'}
-                        </Text>
-                      </TouchableOpacity>
-
-                      <TouchableOpacity 
-                        style={styles.flipButton}
-                        onPress={() => {
-                          setShowAnswer(!showAnswer);
+                          setSelectedChapter(item.id);
+                          setShowChapterDetails(true);
+                          setCurrentCardIndex(0);
+                          setShowAnswer(false);
                           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
                         }}
                       >
-                        <Text style={styles.flipButtonText}>
-                          {showAnswer ? 'Hide Answer' : 'Show Answer'}
-                        </Text>
+                        <View style={styles.chapterHeader}>
+                          <Text style={styles.chapterIcon}>{item.icon}</Text>
+                          <View style={styles.chapterInfo}>
+                            <Text style={styles.chapterTitle}>{item.title}</Text>
+                            <Text style={styles.chapterDescription}>{item.description}</Text>
+                          </View>
+                        </View>
+                        <View style={styles.chapterStats}>
+                          <Text style={styles.chapterCardCount}>{chapterCards.length} cards</Text>
+                          {bookmarkedCount > 0 && (
+                            <Text style={styles.bookmarkedCount}>⭐ {bookmarkedCount} bookmarked</Text>
+                          )}
+                        </View>
                       </TouchableOpacity>
+                    );
+                  }}
+                />
+              </>
+            ) : (
+              // Chapter Detail View
+              <>
+                <View style={styles.chapterDetailHeader}>
+                  <TouchableOpacity 
+                    style={styles.backButton}
+                    onPress={() => {
+                      setShowChapterDetails(false);
+                      setSelectedChapter(null);
+                      setCurrentCardIndex(0);
+                      setShowAnswer(false);
+                    }}
+                  >
+                    <Text style={styles.backButtonText}>← Back to Chapters</Text>
+                  </TouchableOpacity>
+                  <Text style={styles.chapterDetailTitle}>
+                    {chapters.find(ch => ch.id === selectedChapter)?.title}
+                  </Text>
+                </View>
+
+                {/* Study Mode Selector */}
+                <View style={styles.studyModeSelector}>
+                  <TouchableOpacity 
+                    style={[styles.modeButton, studyMode === 'all' && styles.activeMode]}
+                    onPress={() => setStudyMode('all')}
+                  >
+                    <Text style={[styles.modeText, studyMode === 'all' && styles.activeModeText]}>All Cards</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={[styles.modeButton, studyMode === 'bookmarked' && styles.activeMode]}
+                    onPress={() => setStudyMode('bookmarked')}
+                  >
+                    <Text style={[styles.modeText, studyMode === 'bookmarked' && styles.activeModeText]}>Bookmarked</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={[styles.modeButton, studyMode === 'difficult' && styles.activeMode]}
+                    onPress={() => setStudyMode('difficult')}
+                  >
+                    <Text style={[styles.modeText, studyMode === 'difficult' && styles.activeModeText]}>Difficult</Text>
+                  </TouchableOpacity>
+                </View>
+
+                {/* Flashcard Display */}
+                {(() => {
+                  const filteredCards = getFilteredCards();
+                  return filteredCards.length > 0 ? (
+                    <View style={styles.cardContainer}>
+                      <View style={styles.card}>
+                        <Text style={styles.cardQuestion}>
+                          {filteredCards[currentCardIndex]?.question}
+                        </Text>
+                        
+                        {showAnswer && (
+                          <View style={styles.answerContainer}>
+                            <Text style={styles.answerLabel}>Answer:</Text>
+                            <Text style={styles.cardAnswer}>
+                              {filteredCards[currentCardIndex]?.answer}
+                            </Text>
+                          </View>
+                        )}
+
+                        <View style={styles.cardActions}>
+                          <TouchableOpacity 
+                            style={styles.bookmarkButton}
+                            onPress={() => {
+                              const currentCard = filteredCards[currentCardIndex];
+                              const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
+                              const updatedCards = [...flashcards];
+                              updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
+                              setFlashcards(updatedCards);
+                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                            }}
+                          >
+                            <Text style={styles.bookmarkButtonText}>
+                              {filteredCards[currentCardIndex]?.isBookmarked ? '★' : '☆'}
+                            </Text>
+                          </TouchableOpacity>
+
+                          <TouchableOpacity 
+                            style={styles.flipButton}
+                            onPress={() => {
+                              setShowAnswer(!showAnswer);
+                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                            }}
+                          >
+                            <Text style={styles.flipButtonText}>
+                              {showAnswer ? 'Hide Answer' : 'Show Answer'}
+                            </Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+
+                      {/* Navigation Controls */}
+                      <View style={styles.navigationControls}>
+                        <TouchableOpacity 
+                          style={[styles.navButton, currentCardIndex === 0 && styles.disabledButton]}
+                          onPress={() => {
+                            if (currentCardIndex > 0) {
+                              setCurrentCardIndex(currentCardIndex - 1);
+                              setShowAnswer(false);
+                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                            }
+                          }}
+                          disabled={currentCardIndex === 0}
+                        >
+                          <Text style={styles.navButtonText}>Previous</Text>
+                        </TouchableOpacity>
+
+                        <Text style={styles.cardCounter}>
+                          {currentCardIndex + 1} / {filteredCards.length}
+                        </Text>
+
+                        <TouchableOpacity 
+                          style={[styles.navButton, currentCardIndex === filteredCards.length - 1 && styles.disabledButton]}
+                          onPress={() => {
+                            if (currentCardIndex < filteredCards.length - 1) {
+                              setCurrentCardIndex(currentCardIndex + 1);
+                              setShowAnswer(false);
+                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                            }
+                          }}
+                          disabled={currentCardIndex === filteredCards.length - 1}
+                        >
+                          <Text style={styles.navButtonText}>Next</Text>
+                        </TouchableOpacity>
+                      </View>
                     </View>
-                  </View>
-
-                  {/* Navigation Controls */}
-                  <View style={styles.navigationControls}>
-                    <TouchableOpacity 
-                      style={[styles.navButton, currentCardIndex === 0 && styles.disabledButton]}
-                      onPress={() => {
-                        if (currentCardIndex > 0) {
-                          setCurrentCardIndex(currentCardIndex - 1);
-                          setShowAnswer(false);
-                          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                        }
-                      }}
-                      disabled={currentCardIndex === 0}
-                    >
-                      <Text style={styles.navButtonText}>Previous</Text>
-                    </TouchableOpacity>
-
-                    <Text style={styles.cardCounter}>
-                      {currentCardIndex + 1} / {filteredCards.length}
-                    </Text>
-
-                    <TouchableOpacity 
-                      style={[styles.navButton, currentCardIndex === filteredCards.length - 1 && styles.disabledButton]}
-                      onPress={() => {
-                        if (currentCardIndex < filteredCards.length - 1) {
-                          setCurrentCardIndex(currentCardIndex + 1);
-                          setShowAnswer(false);
-                          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                        }
-                      }}
-                      disabled={currentCardIndex === filteredCards.length - 1}
-                    >
-                      <Text style={styles.navButtonText}>Next</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              ) : (
-                <View style={styles.cardContainer}>
-                  <View style={styles.card}>
-                    <Text style={styles.cardQuestion}>
-                      No cards available in this mode
-                    </Text>
-                    <Text style={styles.cardAnswer}>
-                      {studyMode === 'bookmarked' 
-                        ? 'Bookmark some cards to study them here' 
-                        : studyMode === 'difficult' 
-                        ? 'No difficult cards available' 
-                        : 'No cards available'}
-                    </Text>
-                  </View>
-                </View>
-              );
-            })()}
+                  ) : (
+                    <View style={styles.cardContainer}>
+                      <View style={styles.card}>
+                        <Text style={styles.cardQuestion}>
+                          No cards available in this mode
+                        </Text>
+                        <Text style={styles.cardAnswer}>
+                          {studyMode === 'bookmarked' 
+                            ? 'Bookmark some cards to study them here' 
+                            : studyMode === 'difficult' 
+                            ? 'No difficult cards available' 
+                            : 'No cards available'}
+                        </Text>
+                      </View>
+                    </View>
+                  );
+                })()}
+              </>
+            )}
           </View>
         )}
 
@@ -583,6 +686,75 @@ const styles = StyleSheet.create({
   },
   dashboardView: {
     flex: 1,
+  },
+  chapterCard: {
+    backgroundColor: 'white',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 12,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  chapterHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  chapterIcon: {
+    fontSize: 32,
+    marginRight: 16,
+  },
+  chapterInfo: {
+    flex: 1,
+  },
+  chapterTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#1e3a8a',
+    marginBottom: 4,
+  },
+  chapterDescription: {
+    fontSize: 14,
+    color: '#6c757d',
+    lineHeight: 20,
+  },
+  chapterStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  chapterCardCount: {
+    fontSize: 14,
+    color: '#007AFF',
+    fontWeight: '600',
+  },
+  bookmarkedCount: {
+    fontSize: 12,
+    color: '#6c757d',
+  },
+  chapterDetailHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  backButton: {
+    marginRight: 16,
+  },
+  backButtonText: {
+    fontSize: 16,
+    color: '#007AFF',
+    fontWeight: '600',
+  },
+  chapterDetailTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#1e3a8a',
   },
   statsContainer: {
     marginBottom: 30,
