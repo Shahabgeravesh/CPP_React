@@ -55,6 +55,7 @@ const App: React.FC = () => {
   const [showChapterDetails, setShowChapterDetails] = useState(false);
   const [studyCards, setStudyCards] = useState<Flashcard[]>([]);
 
+
   // Define the 6 main chapters from ASIS CPP exam
   const chapters = [
     {
@@ -62,42 +63,42 @@ const App: React.FC = () => {
       title: "Security Principles and Practices (22%)",
       description: "Security management, leadership, and business principles",
       categories: ["Security Principles and Practices"],
-      icon: "security"
+      icon: "shield"
     },
     {
       id: "business-principles-practices",
       title: "Business Principles and Practices (15%)",
       description: "Business operations, financial management, and organizational strategy",
       categories: ["Business Principles and Practices"],
-      icon: "business"
+      icon: "account-balance"
     },
     {
       id: "investigations",
       title: "Investigations (9%)",
       description: "Investigation techniques, procedures, and documentation",
       categories: ["Investigations"],
-      icon: "search"
+      icon: "find-in-page"
     },
     {
       id: "personnel-security",
       title: "Personnel Security (11%)",
       description: "Employee screening, background checks, and personnel protection",
       categories: ["Personnel Security"],
-      icon: "people"
+      icon: "verified-user"
     },
     {
       id: "physical-security",
       title: "Physical Security (16%)",
       description: "Physical protection systems, access control, and security technology",
       categories: ["Physical Security"],
-      icon: "location-on"
+      icon: "security"
     },
     {
       id: "crisis-management",
       title: "Crisis Management (13%)",
       description: "Emergency response, business continuity, and crisis communication",
       categories: ["Crisis Management"],
-      icon: "warning"
+      icon: "emergency"
     }
   ];
 
@@ -297,18 +298,10 @@ const App: React.FC = () => {
       await AsyncStorage.setItem("flashcards", JSON.stringify(initialCards));
       
       // Show confirmation
-      Alert.alert(
-        "Data Reset Complete",
-        "All study progress has been reset. You can now start fresh!",
-        [{ text: "OK" }]
-      );
+      alert("Data Reset Complete\n\nAll study progress has been reset. You can now start fresh!");
     } catch (error) {
       console.error("Error resetting data:", error);
-      Alert.alert(
-        "Reset Error",
-        "There was an error resetting the data. Please try again.",
-        [{ text: "OK" }]
-      );
+      alert("Reset Error\n\nThere was an error resetting the data. Please try again.");
     }
   };
 
@@ -406,8 +399,8 @@ const App: React.FC = () => {
           <View style={styles.statItem}>
             <Text style={styles.statNumber}>{flashcards.length}</Text>
             <Text style={styles.statLabel}>Total Cards</Text>
-          </View>
-        </View>
+      </View>
+      </View>
       </LinearGradient>
 
       {/* Content Area */}
@@ -448,24 +441,24 @@ const App: React.FC = () => {
                           <View style={styles.chapterInfo}>
                             <Text style={styles.chapterTitle}>{item.title}</Text>
                             <Text style={styles.chapterDescription}>{item.description}</Text>
-                          </View>
-                        </View>
+              </View>
+              </View>
                         <View style={styles.chapterStats}>
                           <Text style={styles.chapterCardCount}>{chapterCards.length} cards</Text>
                           <View style={styles.chapterStatsRow}>
                             {bookmarkedCount > 0 && (
                               <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 12 }}>
-                                <Icon name="favorite" size={16} color="#FFD700" style={{ marginRight: 4 }} />
+                                <Icon name="bookmark" size={16} color="#FFD700" style={{ marginRight: 4 }} />
                                 <Text style={styles.bookmarkedCount}>{bookmarkedCount}</Text>
-                              </View>
+              </View>
                             )}
                             {chapterCards.filter(card => card.masteryLevel <= 1).length > 0 && (
                               <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                                <Icon name="warning" size={16} color="#dc3545" style={{ marginRight: 4 }} />
+                                <Icon name="schedule" size={16} color="#64748b" style={{ marginRight: 4 }} />
                                 <Text style={styles.needReviewCount}>
                                   {chapterCards.filter(card => card.masteryLevel <= 1).length} need review
                                 </Text>
-                              </View>
+            </View>
                             )}
                           </View>
                         </View>
@@ -478,7 +471,7 @@ const App: React.FC = () => {
               // Chapter Detail View
               <>
                 <View style={styles.chapterDetailHeader}>
-                  <TouchableOpacity 
+            <TouchableOpacity 
                     style={styles.backButton}
                     onPress={() => {
                       setShowChapterDetails(false);
@@ -488,98 +481,98 @@ const App: React.FC = () => {
                     }}
                   >
                     <Text style={styles.backButtonText}>← Back to Chapters</Text>
-                  </TouchableOpacity>
+            </TouchableOpacity>
                   <Text style={styles.chapterDetailTitle}>
                     {chapters.find(ch => ch.id === selectedChapter)?.title}
                   </Text>
-                </View>
+          </View>
 
-                {/* Study Mode Selector */}
-                <View style={styles.studyModeSelector}>
-                  <TouchableOpacity 
-                    style={[styles.modeButton, studyMode === 'all' && styles.activeMode]}
-                    onPress={() => setStudyMode('all')}
-                  >
-                    <Text style={[styles.modeText, studyMode === 'all' && styles.activeModeText]}>All Cards</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity 
-                    style={[styles.modeButton, studyMode === 'bookmarked' && styles.activeMode]}
-                    onPress={() => setStudyMode('bookmarked')}
-                  >
-                    <Text style={[styles.modeText, studyMode === 'bookmarked' && styles.activeModeText]}>Bookmarked</Text>
-                  </TouchableOpacity>
-                  <TouchableOpacity 
-                    style={[styles.modeButton, studyMode === 'difficult' && styles.activeMode]}
-                    onPress={() => setStudyMode('difficult')}
-                  >
+            {/* Study Mode Selector */}
+            <View style={styles.studyModeSelector}>
+              <TouchableOpacity 
+                style={[styles.modeButton, studyMode === 'all' && styles.activeMode]}
+                onPress={() => setStudyMode('all')}
+              >
+                <Text style={[styles.modeText, studyMode === 'all' && styles.activeModeText]}>All Cards</Text>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                style={[styles.modeButton, studyMode === 'bookmarked' && styles.activeMode]}
+                onPress={() => setStudyMode('bookmarked')}
+              >
+                <Text style={[styles.modeText, studyMode === 'bookmarked' && styles.activeModeText]}>Bookmarked</Text>
+              </TouchableOpacity>
+              <TouchableOpacity 
+                style={[styles.modeButton, studyMode === 'difficult' && styles.activeMode]}
+                onPress={() => setStudyMode('difficult')}
+              >
                     <Text style={[styles.modeText, studyMode === 'difficult' && styles.activeModeText]}>Need Review</Text>
-                  </TouchableOpacity>
-                </View>
+              </TouchableOpacity>
+            </View>
 
-                {/* Flashcard Display */}
-                {(() => {
+            {/* Flashcard Display */}
+            {(() => {
                   return studyCards.length > 0 ? (
-                    <View style={styles.cardContainer}>
+                <View style={styles.cardContainer}>
                       <ScrollView 
                         style={styles.cardScrollView}
                         showsVerticalScrollIndicator={false}
                         contentContainerStyle={styles.cardScrollContent}
                       >
-                        <View style={styles.card}>
-                          <Text style={styles.cardQuestion}>
+                  <View style={styles.card}>
+                    <Text style={styles.cardQuestion}>
                             {studyCards[currentCardIndex]?.question}
-                          </Text>
-                          
-                          {showAnswer && (
-                            <View style={styles.answerContainer}>
-                              <Text style={styles.answerLabel}>Answer:</Text>
-                              <Text style={styles.cardAnswer}>
+                    </Text>
+                    
+                    {showAnswer && (
+                      <View style={styles.answerContainer}>
+                        <Text style={styles.answerLabel}>Answer:</Text>
+                        <Text style={styles.cardAnswer}>
                                 {studyCards[currentCardIndex]?.answer}
-                              </Text>
-                            </View>
-                          )}
+                        </Text>
+                      </View>
+                    )}
 
-                          <View style={styles.cardActions}>
-                            <TouchableOpacity 
-                              style={styles.bookmarkButton}
-                              onPress={() => {
+                    <View style={styles.cardActions}>
+                      <TouchableOpacity 
+                        style={styles.bookmarkButton}
+                        onPress={() => {
                                 const currentCard = studyCards[currentCardIndex];
-                                const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
-                                const updatedCards = [...flashcards];
-                                updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
-                                setFlashcards(updatedCards);
+                          const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
+                          const updatedCards = [...flashcards];
+                          updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
+                          setFlashcards(updatedCards);
                                 AsyncStorage.setItem("flashcards", JSON.stringify(updatedCards));
-                                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                              }}
-                            >
+                          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                        }}
+                      >
                               <Icon 
-                                name={studyCards[currentCardIndex]?.isBookmarked ? 'favorite' : 'favorite-border'} 
+                                name={studyCards[currentCardIndex]?.isBookmarked ? 'bookmark' : 'bookmark-border'} 
                                 size={24} 
-                                color="#007AFF" 
+                                color="#1e3a8a" 
                               />
-                            </TouchableOpacity>
+                      </TouchableOpacity>
 
-                            <TouchableOpacity 
-                              style={styles.flipButton}
-                              onPress={() => {
-                                setShowAnswer(!showAnswer);
-                                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
-                              }}
-                            >
-                              <Text style={styles.flipButtonText}>
-                                {showAnswer ? 'Hide Answer' : 'Show Answer'}
-                              </Text>
-                            </TouchableOpacity>
-                          </View>
-                        </View>
+                      <TouchableOpacity 
+                        style={styles.flipButton}
+                        onPress={() => {
+                          setShowAnswer(!showAnswer);
+                          Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                        }}
+                      >
+                        <Text style={styles.flipButtonText}>
+                          {showAnswer ? 'Hide Answer' : 'Show Answer'}
+                        </Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
                       </ScrollView>
 
                       {/* Spaced Repetition Controls */}
                       {showAnswer && (
                         <View style={styles.spacedRepetitionControls}>
-                          <TouchableOpacity 
+                    <TouchableOpacity 
                             style={[styles.knowledgeButton, styles.didntKnowButton]}
-                            onPress={() => {
+                      onPress={() => {
                               const currentCard = studyCards[currentCardIndex];
                               markCardAsUnknown(currentCard.id);
                               
@@ -599,13 +592,13 @@ const App: React.FC = () => {
                               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
                             }}
                           >
-                            <Icon name="close" size={20} color="white" style={{ marginRight: 8 }} />
+                            <Icon name="thumb-down" size={20} color="white" style={{ marginRight: 8 }} />
                             <Text style={styles.knowledgeButtonText}>I Didn't Know</Text>
-                          </TouchableOpacity>
+                    </TouchableOpacity>
 
-                          <TouchableOpacity 
+                    <TouchableOpacity 
                             style={[styles.knowledgeButton, styles.knewItButton]}
-                            onPress={() => {
+                      onPress={() => {
                               const currentCard = studyCards[currentCardIndex];
                               markCardAsKnown(currentCard.id);
                               
@@ -623,9 +616,9 @@ const App: React.FC = () => {
                               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
                             }}
                           >
-                            <Icon name="check" size={20} color="white" style={{ marginRight: 8 }} />
+                            <Icon name="thumb-up" size={20} color="white" style={{ marginRight: 8 }} />
                             <Text style={styles.knowledgeButtonText}>I Knew It</Text>
-                          </TouchableOpacity>
+                    </TouchableOpacity>
                         </View>
                       )}
 
@@ -642,38 +635,40 @@ const App: React.FC = () => {
                             ]} 
                           />
                         </View>
-                      </View>
-                    </View>
-                  ) : (
-                    <View style={styles.cardContainer}>
-                      <View style={styles.card}>
-                        <Text style={styles.cardQuestion}>
+                  </View>
+                </View>
+              ) : (
+                <View style={styles.cardContainer}>
+                  <View style={styles.card}>
+                    <Text style={styles.cardQuestion}>
                           🎉 Great job!
-                        </Text>
-                        <Text style={styles.cardAnswer}>
-                          {studyMode === 'bookmarked' 
+                    </Text>
+                    <Text style={styles.cardAnswer}>
+                      {studyMode === 'bookmarked' 
                             ? 'You\'ve reviewed all your bookmarked cards!' 
-                            : studyMode === 'difficult' 
+                        : studyMode === 'difficult' 
                             ? 'Great job! You\'ve reviewed all cards that need attention!' 
                             : 'Congratulations! You\'ve mastered all cards in this chapter!'}
-                        </Text>
-                        <TouchableOpacity 
-                          style={styles.restartButton}
-                          onPress={() => {
-                            const reviewCards = getCardsForReview();
-                            if (reviewCards.length > 0) {
-                              setStudyCards(reviewCards);
-                              setCurrentCardIndex(0);
-                              setShowAnswer(false);
-                            }
-                          }}
-                        >
-                          <Text style={styles.restartButtonText}>Start New Session</Text>
-                        </TouchableOpacity>
-                      </View>
-                    </View>
-                  );
-                })()}
+                    </Text>
+                        {studyMode === 'all' && (
+                          <TouchableOpacity 
+                            style={styles.restartButton}
+                            onPress={() => {
+                              const reviewCards = getCardsForReview();
+                              if (reviewCards.length > 0) {
+                                setStudyCards(reviewCards);
+                                setCurrentCardIndex(0);
+                                setShowAnswer(false);
+                              }
+                            }}
+                          >
+                            <Text style={styles.restartButtonText}>Start New Session</Text>
+                          </TouchableOpacity>
+                        )}
+                  </View>
+    </View>
+  );
+            })()}
               </>
             )}
           </View>
@@ -695,14 +690,14 @@ const App: React.FC = () => {
                     <View key={item.id} style={styles.favoriteCard}>
                       <Text style={styles.favoriteQuestion}>{item.question}</Text>
                       <Text style={styles.favoriteAnswer}>{item.answer}</Text>
-                    </View>
+              </View>
                   ))}
                 </ScrollView>
               ) : (
                 <View style={styles.emptyState}>
                   <Text style={styles.emptyStateText}>No bookmarked cards yet</Text>
                   <Text style={styles.emptyStateSubtext}>Bookmark cards while studying to see them here</Text>
-                </View>
+              </View>
               );
             })()}
           </View>
@@ -713,7 +708,7 @@ const App: React.FC = () => {
             <Text style={styles.sectionTitle}>Dashboard</Text>
             
             {/* Overall Progress Summary */}
-            <View style={styles.dashboardStatsGrid}>
+            <View style={[styles.dashboardStatsGrid, { marginBottom: 16 }]}>
               <View style={styles.dashboardStatCard}>
                 <Text style={styles.dashboardStatNumber}>{flashcards.length}</Text>
                 <Text style={styles.dashboardStatLabel}>Total Cards</Text>
@@ -732,8 +727,8 @@ const App: React.FC = () => {
               </View>
             </View>
 
-            {/* Chapter Progress */}
-            <View style={styles.chapterProgressSection}>
+            {/* Chapter Progress (condensed) */}
+            <View style={[styles.chapterProgressSection, { marginBottom: 16 }]}>
               <Text style={styles.sectionSubtitle}>Chapter Progress</Text>
               {chapters.map((chapter) => {
                 const chapterCards = getChapterCards(chapter.id);
@@ -743,19 +738,19 @@ const App: React.FC = () => {
                 const needReviewCards = chapterCards.filter(card => card.reviewCount > 0 && card.masteryLevel === 0).length;
                 
                 return (
-                  <View key={chapter.id} style={styles.chapterProgressCard}>
+                  <View key={chapter.id} style={[styles.chapterProgressCard, { marginBottom: 10 }]}>
                     <View style={styles.chapterProgressHeader}>
                       <View style={styles.chapterProgressInfo}>
                         <Text style={styles.chapterProgressTitle}>{chapter.title}</Text>
                         <Text style={styles.chapterProgressSubtitle}>
                           {masteredCards}/{totalCards} mastered
-                        </Text>
+                      </Text>
                       </View>
                       <View style={styles.chapterProgressStats}>
                         <Text style={styles.chapterProgressPercentage}>
                           {Math.round(progressPercentage)}%
-                        </Text>
-                      </View>
+                      </Text>
+                    </View>
                     </View>
                     
                     <View style={styles.chapterProgressBar}>
@@ -764,8 +759,8 @@ const App: React.FC = () => {
                           styles.chapterProgressFill, 
                           { width: `${progressPercentage}%` }
                         ]} 
-                      />
-                    </View>
+                />
+              </View>
                     
                     <View style={styles.chapterProgressDetails}>
                       <View style={styles.chapterProgressDetail}>
@@ -784,11 +779,9 @@ const App: React.FC = () => {
                   </View>
                 );
               })}
-            </View>
+              
 
-
-
-
+          </View>
           </ScrollView>
         )}
 
@@ -798,7 +791,11 @@ const App: React.FC = () => {
             
             <TouchableOpacity 
               style={styles.settingButton}
-              onPress={resetData}
+              onPress={() => {
+                if (confirm("This will erase all your progress, bookmarks, and study sessions. Are you sure you want to continue?")) {
+                  resetData();
+                }
+              }}
             >
               <Text style={styles.settingButtonText}>Reset All Data</Text>
             </TouchableOpacity>
@@ -806,13 +803,11 @@ const App: React.FC = () => {
             <TouchableOpacity 
               style={styles.settingButton}
               onPress={() => {
-                Alert.alert(
-                  "About ASIS CPP Flashcards",
-                  `📚 ASIS CPP Flashcards v1.0
+                alert(`🛡️ ASIS CPP Flashcards v1.0
 
 🎯 Master the Certified Protection Professional (CPP) exam with comprehensive flashcards covering all exam domains.
 
-📖 Study Content:
+📋 Study Content:
 • Security Principles and Practices (22%)
 • Business Principles and Practices (15%)
 • Investigations (9%)
@@ -820,7 +815,7 @@ const App: React.FC = () => {
 • Physical Security (16%)
 • Crisis Management (13%)
 
-✨ Features:
+⚡ Features:
 • 629 comprehensive flashcards
 • Spaced repetition learning
 • Chapter-based organization
@@ -829,14 +824,12 @@ const App: React.FC = () => {
 • Study session analytics
 • Offline functionality
 
-🎓 Exam Preparation:
+🏆 Exam Preparation:
 The CPP certification is the gold standard for security management professionals. This app helps you master the core concepts through active recall and spaced repetition.
 
-📱 Built with React Native & Expo
+💻 Built with React Native & Expo
 
-Good luck with your CPP exam! 🚀`,
-                  [{ text: "OK" }]
-                );
+Good luck with your CPP exam! 🚀`);
               }}
             >
               <Text style={styles.settingButtonText}>About</Text>
@@ -857,61 +850,80 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   header: {
-    padding: 20,
-    backgroundColor: '#007AFF',
+    padding: 24,
+    backgroundColor: '#1e3a8a',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 8,
   },
   headerTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: '800',
     color: 'white',
+    letterSpacing: 0.5,
   },
   headerSubtitle: {
-    fontSize: 14,
+    fontSize: 15,
     color: 'white',
-    opacity: 0.9,
-    marginTop: 5,
+    opacity: 0.95,
+    marginTop: 8,
     textAlign: 'center',
     marginHorizontal: 20,
+    lineHeight: 20,
+    fontWeight: '400',
   },
   headerStats: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
-    marginTop: 20,
+    marginTop: 24,
     paddingHorizontal: 20,
   },
 
   statNumber: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 26,
+    fontWeight: '800',
     color: 'white',
+    letterSpacing: 0.5,
   },
   statLabel: {
-    fontSize: 12,
+    fontSize: 13,
     color: 'white',
     opacity: 0.9,
-    marginTop: 4,
+    marginTop: 6,
+    fontWeight: '500',
+    letterSpacing: 0.3,
   },
   content: {
     flex: 1,
-    padding: 20,
+    padding: 24,
     paddingBottom: 80, // Add padding for bottom navigation
+    backgroundColor: '#f8fafc',
   },
   chaptersView: {
     flex: 1,
   },
   sectionTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 26,
+    fontWeight: '800',
     textAlign: 'center',
-    marginBottom: 10,
+    marginBottom: 12,
+    color: '#1e293b',
+    letterSpacing: 0.5,
   },
   sectionSubtitle: {
     fontSize: 16,
-    color: '#6c757d',
+    color: '#64748b',
     textAlign: 'center',
-    marginBottom: 30,
+    marginBottom: 32,
+    fontWeight: '500',
+    lineHeight: 22,
   },
   statsGrid: {
     flexDirection: 'row',
@@ -956,23 +968,27 @@ const styles = StyleSheet.create({
   },
   card: {
     backgroundColor: 'white',
-    borderRadius: 15,
-    padding: 20,
-    marginBottom: 20,
+    borderRadius: 20,
+    padding: 24,
+    marginBottom: 24,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 6,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 12,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
   },
   cardQuestion: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 15,
-    lineHeight: 24,
+    fontSize: 20,
+    fontWeight: '700',
+    marginBottom: 18,
+    lineHeight: 28,
+    color: '#1e293b',
+    letterSpacing: 0.3,
   },
   answerContainer: {
     marginTop: 15,
@@ -981,15 +997,17 @@ const styles = StyleSheet.create({
     borderTopColor: '#e9ecef',
   },
   answerLabel: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#007AFF',
-    marginBottom: 5,
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#1e3a8a',
+    marginBottom: 8,
+    letterSpacing: 0.3,
   },
   cardAnswer: {
-    fontSize: 16,
-    lineHeight: 22,
-    color: '#495057',
+    fontSize: 17,
+    lineHeight: 26,
+    color: '#374151',
+    fontWeight: '400',
   },
   cardActions: {
     flexDirection: 'row',
@@ -1005,15 +1023,24 @@ const styles = StyleSheet.create({
     color: '#007AFF',
   },
   flipButton: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 20,
+    backgroundColor: '#1e3a8a',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   flipButtonText: {
     color: 'white',
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 15,
+    fontWeight: '700',
+    letterSpacing: 0.3,
   },
   navigationControls: {
     flexDirection: 'row',
@@ -1021,18 +1048,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   navButton: {
-    backgroundColor: '#007AFF',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 20,
+    backgroundColor: '#1e3a8a',
+    paddingHorizontal: 24,
+    paddingVertical: 12,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   disabledButton: {
-    backgroundColor: '#e9ecef',
+    backgroundColor: '#e5e7eb',
   },
   navButtonText: {
     color: 'white',
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: 15,
+    fontWeight: '700',
+    letterSpacing: 0.3,
   },
   cardCounter: {
     fontSize: 16,
@@ -1084,19 +1120,19 @@ const styles = StyleSheet.create({
   },
   chapterCard: {
     backgroundColor: 'white',
-    borderRadius: 16,
-    padding: 20,
-    marginBottom: 16,
+    borderRadius: 20,
+    padding: 24,
+    marginBottom: 20,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 4,
+      height: 6,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 8,
+    shadowOpacity: 0.08,
+    shadowRadius: 12,
+    elevation: 12,
     borderWidth: 1,
-    borderColor: '#f0f0f0',
+    borderColor: '#e2e8f0',
   },
   chapterHeader: {
     flexDirection: 'row',
@@ -1111,15 +1147,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   chapterTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 20,
+    fontWeight: '700',
     color: '#1e3a8a',
-    marginBottom: 4,
+    marginBottom: 6,
+    letterSpacing: 0.3,
   },
   chapterDescription: {
-    fontSize: 14,
-    color: '#6c757d',
-    lineHeight: 20,
+    fontSize: 15,
+    color: '#64748b',
+    lineHeight: 22,
+    fontWeight: '400',
   },
   chapterStats: {
     flexDirection: 'row',
@@ -1141,7 +1179,8 @@ const styles = StyleSheet.create({
   },
   needReviewCount: {
     fontSize: 12,
-    color: '#dc3545',
+    color: '#64748b',
+    fontWeight: '500',
   },
   chapterDetailHeader: {
     flexDirection: 'row',
@@ -1197,15 +1236,28 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   settingButton: {
-    backgroundColor: '#f8f9fa',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-    marginBottom: 15,
+    backgroundColor: 'white',
+    paddingVertical: 18,
+    paddingHorizontal: 24,
+    borderRadius: 16,
+    marginBottom: 18,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 6,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
   },
   settingButtonText: {
     fontSize: 16,
-    color: '#495057',
+    color: '#374151',
+    fontWeight: '600',
+    textAlign: 'center',
+    letterSpacing: 0.3,
   },
   // Spaced Repetition Styles
   spacedRepetitionControls: {
@@ -1219,28 +1271,29 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 25,
+    paddingVertical: 16,
+    paddingHorizontal: 24,
+    borderRadius: 28,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
+    elevation: 6,
   },
   didntKnowButton: {
-    backgroundColor: '#dc3545',
+    backgroundColor: '#dc2626',
   },
   knewItButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: '#059669',
   },
   knowledgeButtonText: {
     color: 'white',
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: '700',
+    letterSpacing: 0.3,
   },
   progressContainer: {
     marginTop: 20,
@@ -1299,47 +1352,54 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   dashboardStatCard: {
-    backgroundColor: '#f8f9fa',
-    borderRadius: 12,
-    padding: 15,
+    backgroundColor: 'white',
+    borderRadius: 16,
+    padding: 20,
     minWidth: '48%',
     alignItems: 'center',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 8,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
   },
   dashboardStatNumber: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 26,
+    fontWeight: '800',
     color: '#1e3a8a',
-    marginBottom: 5,
+    marginBottom: 6,
+    letterSpacing: 0.5,
   },
   dashboardStatLabel: {
-    fontSize: 12,
-    color: '#6c757d',
+    fontSize: 13,
+    color: '#64748b',
     textAlign: 'center',
+    fontWeight: '500',
+    letterSpacing: 0.3,
   },
   chapterProgressSection: {
     marginBottom: 30,
   },
   chapterProgressCard: {
     backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 15,
-    marginBottom: 15,
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 18,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
-    shadowOpacity: 0.1,
-    shadowRadius: 3,
-    elevation: 2,
+    shadowOpacity: 0.08,
+    shadowRadius: 8,
+    elevation: 8,
+    borderWidth: 1,
+    borderColor: '#e2e8f0',
   },
   chapterProgressHeader: {
     flexDirection: 'row',
@@ -1351,34 +1411,37 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   chapterProgressTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 17,
+    fontWeight: '700',
     color: '#1e3a8a',
-    marginBottom: 2,
+    marginBottom: 4,
+    letterSpacing: 0.3,
   },
   chapterProgressSubtitle: {
-    fontSize: 12,
-    color: '#6c757d',
+    fontSize: 13,
+    color: '#64748b',
+    fontWeight: '500',
   },
   chapterProgressStats: {
     alignItems: 'flex-end',
   },
   chapterProgressPercentage: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#007AFF',
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#1e3a8a',
+    letterSpacing: 0.5,
   },
   chapterProgressBar: {
-    height: 8,
-    backgroundColor: '#e9ecef',
-    borderRadius: 4,
+    height: 10,
+    backgroundColor: '#e2e8f0',
+    borderRadius: 5,
     overflow: 'hidden',
-    marginBottom: 10,
+    marginBottom: 12,
   },
   chapterProgressFill: {
     height: '100%',
-    backgroundColor: '#007AFF',
-    borderRadius: 4,
+    backgroundColor: '#1e3a8a',
+    borderRadius: 5,
   },
   chapterProgressDetails: {
     flexDirection: 'row',
@@ -1399,7 +1462,8 @@ const styles = StyleSheet.create({
     color: '#495057',
   },
   needReviewHighlight: {
-    color: '#dc3545',
+    color: '#64748b',
+    fontWeight: '600',
   },
   studyInsightsSection: {
     marginBottom: 30,

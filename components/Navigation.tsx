@@ -9,10 +9,10 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
   const navItems = [
-    { id: 'chapters', label: 'Chapters', icon: 'library-books' },
-    { id: 'favorites', label: 'Favorites', icon: 'favorite' },
-    { id: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
-    { id: 'settings', label: 'Settings', icon: 'settings' },
+    { id: 'chapters', label: 'Chapters', icon: 'menu-book' },
+    { id: 'favorites', label: 'Favorites', icon: 'bookmark' },
+    { id: 'dashboard', label: 'Dashboard', icon: 'analytics' },
+    { id: 'settings', label: 'Settings', icon: 'tune' },
   ];
 
   return (
@@ -50,33 +50,42 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
     borderTopWidth: 1,
     borderTopColor: '#e2e8f0',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 12,
+    paddingHorizontal: 24,
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: -4,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 8,
   },
   navItem: {
     flex: 1,
     alignItems: 'center',
-    paddingVertical: 8,
-    borderRadius: 8,
+    paddingVertical: 10,
+    borderRadius: 12,
   },
   activeNavItem: {
     backgroundColor: '#dbeafe',
   },
   navIcon: {
-    marginBottom: 4,
+    marginBottom: 6,
   },
   navLabel: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#64748b',
-    fontWeight: '500',
+    fontWeight: '600',
+    letterSpacing: 0.3,
   },
   activeNavLabel: {
     color: '#1e3a8a',
-    fontWeight: '600',
+    fontWeight: '700',
   },
 });
 
