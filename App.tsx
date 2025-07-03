@@ -29,6 +29,7 @@ interface Flashcard {
   category: string;
   difficulty: "easy" | "medium" | "hard";
   isBookmarked: boolean;
+  isFavorite: boolean;
   lastReviewed?: Date;
   reviewCount: number;
   isMastered: boolean;
@@ -45,7 +46,7 @@ interface StudySession {
 }
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<"chapters" | "favorites" | "dashboard" | "settings">("chapters");
+  const [currentView, setCurrentView] = useState<"chapters" | "dashboard" | "settings">("chapters");
   const [flashcards, setFlashcards] = useState<Flashcard[]>(flashcardsData.flashcards || []);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [showAnswer, setShowAnswer] = useState(false);
@@ -358,6 +359,7 @@ const App: React.FC = () => {
         const updatedCards = parsedCards.map((card: any) => ({
           ...card,
           isMastered: card.isMastered || false,
+          isFavorite: card.isFavorite || false,
           nextReviewDate: card.nextReviewDate ? new Date(card.nextReviewDate) : undefined,
           masteryLevel: card.masteryLevel || 0,
           lastReviewed: card.lastReviewed ? new Date(card.lastReviewed) : undefined
@@ -368,6 +370,7 @@ const App: React.FC = () => {
         const initialCards = (flashcardsData.flashcards || []).map((card: any) => ({
           ...card,
           isMastered: false,
+          isFavorite: card.isFavorite || false,
           nextReviewDate: undefined,
           masteryLevel: 0,
           lastReviewed: undefined
@@ -534,22 +537,25 @@ const App: React.FC = () => {
 
                     <View style={styles.cardActions}>
                       <TouchableOpacity 
-                        style={styles.bookmarkButton}
+                        style={styles.favoriteButton}
                         onPress={() => {
-                                const currentCard = studyCards[currentCardIndex];
+                          const currentCard = studyCards[currentCardIndex];
                           const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
                           const updatedCards = [...flashcards];
+                          // Toggle bookmark when favorite is pressed
                           updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
+                          // Also update favorite status to match bookmark status
+                          updatedCards[cardIndexInFullArray].isFavorite = updatedCards[cardIndexInFullArray].isBookmarked;
                           setFlashcards(updatedCards);
-                                AsyncStorage.setItem("flashcards", JSON.stringify(updatedCards));
+                          AsyncStorage.setItem("flashcards", JSON.stringify(updatedCards));
                           Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                         }}
                       >
-                              <Icon 
-                                name={studyCards[currentCardIndex]?.isBookmarked ? 'bookmark' : 'bookmark-border'} 
-                                size={24} 
-                                color="#1e3a8a" 
-                              />
+                        <Icon 
+                          name={studyCards[currentCardIndex]?.isBookmarked ? 'favorite' : 'favorite-border'} 
+                          size={24} 
+                          color={studyCards[currentCardIndex]?.isBookmarked ? "#e11d48" : "#6b7280"} 
+                        />
                       </TouchableOpacity>
 
                       <TouchableOpacity 
@@ -674,34 +680,7 @@ const App: React.FC = () => {
           </View>
         )}
 
-        {currentView === 'favorites' && (
-          <View style={styles.favoritesView}>
-            <Text style={styles.sectionTitle}>Favorites</Text>
-            <Text style={styles.sectionSubtitle}>Your bookmarked cards</Text>
-            
-            {(() => {
-              const bookmarkedCards = flashcards.filter(card => card.isBookmarked);
-              return bookmarkedCards.length > 0 ? (
-                <ScrollView 
-                  style={styles.favoritesScrollView}
-                  showsVerticalScrollIndicator={false}
-                >
-                  {bookmarkedCards.map((item) => (
-                    <View key={item.id} style={styles.favoriteCard}>
-                      <Text style={styles.favoriteQuestion}>{item.question}</Text>
-                      <Text style={styles.favoriteAnswer}>{item.answer}</Text>
-              </View>
-                  ))}
-                </ScrollView>
-              ) : (
-                <View style={styles.emptyState}>
-                  <Text style={styles.emptyStateText}>No bookmarked cards yet</Text>
-                  <Text style={styles.emptyStateSubtext}>Bookmark cards while studying to see them here</Text>
-              </View>
-              );
-            })()}
-          </View>
-        )}
+
 
         {currentView === 'dashboard' && (
           <ScrollView style={styles.dashboardScrollView} showsVerticalScrollIndicator={false}>
@@ -1015,12 +994,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  bookmarkButton: {
+  favoriteButton: {
     padding: 10,
-  },
-  bookmarkButtonText: {
-    fontSize: 24,
-    color: '#007AFF',
   },
   flipButton: {
     backgroundColor: '#1e3a8a',
@@ -1074,9 +1049,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#6c757d',
   },
-  favoritesView: {
-    flex: 1,
-  },
   emptyState: {
     flex: 1,
     alignItems: 'center',
@@ -1090,30 +1062,6 @@ const styles = StyleSheet.create({
   emptyStateSubtext: {
     fontSize: 14,
     color: '#6c757d',
-  },
-  favoriteCard: {
-    backgroundColor: 'white',
-    borderRadius: 10,
-    padding: 15,
-    marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 2,
-    elevation: 2,
-  },
-  favoriteQuestion: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 8,
-  },
-  favoriteAnswer: {
-    fontSize: 14,
-    color: '#6c757d',
-    lineHeight: 20,
   },
   dashboardView: {
     flex: 1,
@@ -1337,9 +1285,7 @@ const styles = StyleSheet.create({
   cardScrollContent: {
     flexGrow: 1,
   },
-  favoritesScrollView: {
-    flex: 1,
-  },
+
   dashboardScrollView: {
     flex: 1,
   },

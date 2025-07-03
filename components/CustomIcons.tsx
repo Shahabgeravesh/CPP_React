@@ -28,7 +28,6 @@ const CustomIcon: React.FC<CustomIconProps> = ({
 export const Icons = {
   // Navigation
   chapters: 'library-books',
-  favorites: 'favorite',
   dashboard: 'dashboard',
   settings: 'settings',
   
