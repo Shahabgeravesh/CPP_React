@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface NavigationProps {
   currentView: string;
@@ -8,10 +9,10 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
   const navItems = [
-    { id: 'chapters', label: 'Chapters', icon: '📚' },
-    { id: 'favorites', label: 'Favorites', icon: '⭐' },
-    { id: 'dashboard', label: 'Dashboard', icon: '📊' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' },
+    { id: 'chapters', label: 'Chapters', icon: 'library-books' },
+    { id: 'favorites', label: 'Favorites', icon: 'favorite' },
+    { id: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
+    { id: 'settings', label: 'Settings', icon: 'settings' },
   ];
 
   return (
@@ -25,7 +26,12 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
           ]}
           onPress={() => onNavigate(item.id as any)}
         >
-          <Text style={styles.navIcon}>{item.icon}</Text>
+          <Icon 
+            name={item.icon} 
+            size={24} 
+            color={currentView === item.id ? '#1e3a8a' : '#64748b'} 
+            style={styles.navIcon}
+          />
           <Text style={[
             styles.navLabel,
             currentView === item.id && styles.activeNavLabel
@@ -61,7 +67,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#dbeafe',
   },
   navIcon: {
-    fontSize: 20,
     marginBottom: 4,
   },
   navLabel: {

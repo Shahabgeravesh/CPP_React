@@ -16,6 +16,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Haptics from "expo-haptics";
+import Icon from "react-native-vector-icons/MaterialIcons";
 import Navigation from "./components/Navigation";
 import Settings from "./components/Settings";
 const flashcardsData = require("./assets/flashcards.json");
@@ -57,42 +58,42 @@ const App: React.FC = () => {
       title: "Security Principles and Practices (22%)",
       description: "Security management, leadership, and business principles",
       categories: ["Security Principles and Practices"],
-      icon: "🛡️"
+      icon: "security"
     },
     {
       id: "business-principles-practices",
       title: "Business Principles and Practices (15%)",
       description: "Business operations, financial management, and organizational strategy",
       categories: ["Business Principles and Practices"],
-      icon: "💼"
+      icon: "business"
     },
     {
       id: "investigations",
       title: "Investigations (9%)",
       description: "Investigation techniques, procedures, and documentation",
       categories: ["Investigations"],
-      icon: "🔍"
+      icon: "search"
     },
     {
       id: "personnel-security",
       title: "Personnel Security (11%)",
       description: "Employee screening, background checks, and personnel protection",
       categories: ["Personnel Security"],
-      icon: "👥"
+      icon: "people"
     },
     {
       id: "physical-security",
       title: "Physical Security (16%)",
       description: "Physical protection systems, access control, and security technology",
       categories: ["Physical Security"],
-      icon: "🏢"
+      icon: "location-on"
     },
     {
       id: "crisis-management",
       title: "Crisis Management (13%)",
       description: "Emergency response, business continuity, and crisis communication",
       categories: ["Crisis Management"],
-      icon: "🚨"
+      icon: "warning"
     }
   ];
 
@@ -164,11 +165,25 @@ const App: React.FC = () => {
 
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style="light" backgroundColor="#1e3a8a" />
       {/* Header */}
-      <View style={styles.header}>
+      <LinearGradient
+        colors={['#1e3a8a', '#3b82f6']}
+        style={styles.header}
+      >
         <Text style={styles.headerTitle}>ASIS CPP Flashcards</Text>
-        <Text style={styles.headerSubtitle}>Loaded: {flashcards.length} cards</Text>
-      </View>
+        <Text style={styles.headerSubtitle}>Master the Certified Protection Professional Exam</Text>
+        <View style={styles.headerStats}>
+          <View style={styles.statItem}>
+            <Text style={styles.statNumber}>{flashcards.length}</Text>
+            <Text style={styles.statLabel}>Total Cards</Text>
+          </View>
+          <View style={styles.statItem}>
+            <Text style={styles.statNumber}>{flashcards.filter(card => card.isBookmarked).length}</Text>
+            <Text style={styles.statLabel}>Bookmarked</Text>
+          </View>
+        </View>
+      </LinearGradient>
 
       {/* Content Area */}
       <View style={styles.content}>
@@ -199,7 +214,12 @@ const App: React.FC = () => {
                         }}
                       >
                         <View style={styles.chapterHeader}>
-                          <Text style={styles.chapterIcon}>{item.icon}</Text>
+                          <Icon 
+                            name={item.icon} 
+                            size={32} 
+                            color="#1e3a8a" 
+                            style={styles.chapterIcon}
+                          />
                           <View style={styles.chapterInfo}>
                             <Text style={styles.chapterTitle}>{item.title}</Text>
                             <Text style={styles.chapterDescription}>{item.description}</Text>
@@ -208,7 +228,10 @@ const App: React.FC = () => {
                         <View style={styles.chapterStats}>
                           <Text style={styles.chapterCardCount}>{chapterCards.length} cards</Text>
                           {bookmarkedCount > 0 && (
-                            <Text style={styles.bookmarkedCount}>⭐ {bookmarkedCount} bookmarked</Text>
+                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                              <Icon name="favorite" size={16} color="#FFD700" style={{ marginRight: 4 }} />
+                              <Text style={styles.bookmarkedCount}>{bookmarkedCount} bookmarked</Text>
+                            </View>
                           )}
                         </View>
                       </TouchableOpacity>
@@ -289,9 +312,11 @@ const App: React.FC = () => {
                               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
                             }}
                           >
-                            <Text style={styles.bookmarkButtonText}>
-                              {filteredCards[currentCardIndex]?.isBookmarked ? '★' : '☆'}
-                            </Text>
+                            <Icon 
+                              name={filteredCards[currentCardIndex]?.isBookmarked ? 'favorite' : 'favorite-border'} 
+                              size={24} 
+                              color="#007AFF" 
+                            />
                           </TouchableOpacity>
 
                           <TouchableOpacity 
@@ -486,8 +511,35 @@ const styles = StyleSheet.create({
   headerSubtitle: {
     fontSize: 14,
     color: 'white',
-    opacity: 0.8,
+    opacity: 0.9,
     marginTop: 5,
+    textAlign: 'center',
+    marginHorizontal: 20,
+  },
+  headerStats: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: 20,
+    paddingHorizontal: 20,
+  },
+  statItem: {
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 12,
+    padding: 15,
+    minWidth: 80,
+  },
+  statNumber: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  statLabel: {
+    fontSize: 12,
+    color: 'white',
+    opacity: 0.9,
+    marginTop: 4,
   },
   content: {
     flex: 1,
@@ -522,16 +574,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     minWidth: 80,
   },
-  statNumber: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: '#007AFF',
-  },
-  statLabel: {
-    fontSize: 12,
-    color: '#6c757d',
-    marginTop: 5,
-  },
+
   studyModeSelector: {
     flexDirection: 'row',
     marginBottom: 20,
@@ -689,17 +732,19 @@ const styles = StyleSheet.create({
   },
   chapterCard: {
     backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
+    borderRadius: 16,
+    padding: 20,
+    marginBottom: 16,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
-      height: 2,
+      height: 4,
     },
     shadowOpacity: 0.1,
-    shadowRadius: 3.84,
-    elevation: 5,
+    shadowRadius: 8,
+    elevation: 8,
+    borderWidth: 1,
+    borderColor: '#f0f0f0',
   },
   chapterHeader: {
     flexDirection: 'row',
