@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "ASIS CPP Flashcard",
-    "slug": "asis-cpp-flashcard",
+    "name": "ASIS CPP Flashcards",
+    "slug": "asis-cpp-flashcards",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -14,7 +14,8 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.asis.cppflashcard"
+      "bundleIdentifier": "com.asis.cppflashcard",
+      "buildNumber": "1"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,10 +23,46 @@
         "backgroundColor": "#1e3a8a"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.asis.cppflashcard"
+      "package": "com.asis.cppflashcard",
+      "versionCode": 1,
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ],
+      "blockedPermissions": [
+        "android.permission.RECORD_AUDIO",
+        "android.permission.CAMERA",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "your-project-id-here"
+      }
+    },
+    "owner": "shahabgeravesh",
+    "description": "Master the ASIS Certified Protection Professional (CPP) exam with comprehensive flashcards covering all 6 exam domains. Study efficiently with organized chapters, bookmark important cards, and track your progress.",
+    "keywords": [
+      "ASIS",
+      "CPP",
+      "Certified Protection Professional",
+      "Security",
+      "Flashcards",
+      "Study",
+      "Exam Preparation",
+      "Security Management"
+    ],
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ]
   }
 }

@@ -1,17 +1,18 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface NavigationProps {
   currentView: string;
-  onNavigate: (view: 'home' | 'study' | 'stats' | 'settings') => void;
+  onNavigate: (view: 'chapters' | 'favorites' | 'dashboard' | 'settings') => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
   const navItems = [
-    { id: 'home', label: 'Home', icon: '🏠' },
-    { id: 'study', label: 'Study', icon: '📚' },
-    { id: 'stats', label: 'Stats', icon: '📊' },
-    { id: 'settings', label: 'Settings', icon: '⚙️' },
+    { id: 'chapters', label: 'Chapters', icon: 'library-books' },
+    { id: 'favorites', label: 'Favorites', icon: 'favorite' },
+    { id: 'dashboard', label: 'Dashboard', icon: 'dashboard' },
+    { id: 'settings', label: 'Settings', icon: 'settings' },
   ];
 
   return (
@@ -25,7 +26,12 @@ const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
           ]}
           onPress={() => onNavigate(item.id as any)}
         >
-          <Text style={styles.navIcon}>{item.icon}</Text>
+          <Icon 
+            name={item.icon} 
+            size={24} 
+            color={currentView === item.id ? '#1e3a8a' : '#64748b'} 
+            style={styles.navIcon}
+          />
           <Text style={[
             styles.navLabel,
             currentView === item.id && styles.activeNavLabel
@@ -46,6 +52,10 @@ const styles = StyleSheet.create({
     borderTopColor: '#e2e8f0',
     paddingVertical: 10,
     paddingHorizontal: 20,
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
   },
   navItem: {
     flex: 1,
@@ -57,7 +67,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#dbeafe',
   },
   navIcon: {
-    fontSize: 20,
     marginBottom: 4,
   },
   navLabel: {
