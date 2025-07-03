@@ -31,6 +31,9 @@ interface Flashcard {
   isBookmarked: boolean;
   lastReviewed?: Date;
   reviewCount: number;
+  isMastered: boolean;
+  nextReviewDate?: Date;
+  masteryLevel: number; // 0 = never seen, 1-5 = learning levels
 }
 
 interface StudySession {
@@ -50,6 +53,7 @@ const App: React.FC = () => {
   const [studySessions, setStudySessions] = useState<StudySession[]>([]);
   const [selectedChapter, setSelectedChapter] = useState<string | null>(null);
   const [showChapterDetails, setShowChapterDetails] = useState(false);
+  const [studyCards, setStudyCards] = useState<Flashcard[]>([]);
 
   // Define the 6 main chapters from ASIS CPP exam
   const chapters = [
@@ -104,19 +108,150 @@ const App: React.FC = () => {
     return flashcards.filter(card => chapter.categories.includes(card.category));
   };
 
-  // Filter flashcards based on study mode
+  // Spaced repetition logic
+  const getNextReviewDate = (masteryLevel: number): Date => {
+    const now = new Date();
+    const intervals = [1, 3, 7, 14, 30, 90]; // Days between reviews
+    const daysToAdd = masteryLevel < intervals.length ? intervals[masteryLevel] : intervals[intervals.length - 1];
+    return new Date(now.getTime() + daysToAdd * 24 * 60 * 60 * 1000);
+  };
+
+  const markCardAsKnown = (cardId: string) => {
+    const updatedCards = flashcards.map(card => {
+      if (card.id === cardId) {
+        return {
+          ...card,
+          masteryLevel: 3, // Mark as mastered (level 3)
+          nextReviewDate: undefined, // No more reviews needed
+          lastReviewed: new Date(),
+          reviewCount: card.reviewCount + 1,
+          isMastered: true // Mark as mastered
+        };
+      }
+      return card;
+    });
+    setFlashcards(updatedCards);
+    AsyncStorage.setItem("flashcards", JSON.stringify(updatedCards));
+    
+    // Update study session
+    updateStudySession(cardId, true);
+  };
+
+  // Update study session with card review
+  const updateStudySession = (cardId: string, wasCorrect: boolean) => {
+    const today = new Date().toDateString();
+    const existingSession = studySessions.find(session => 
+      new Date(session.date).toDateString() === today
+    );
+
+    if (existingSession) {
+      // Update existing session
+      const updatedSessions = studySessions.map(session => {
+        if (new Date(session.date).toDateString() === today) {
+          return {
+            ...session,
+            cardsReviewed: session.cardsReviewed + 1,
+            correctAnswers: session.correctAnswers + (wasCorrect ? 1 : 0)
+          };
+        }
+        return session;
+      });
+      setStudySessions(updatedSessions);
+      AsyncStorage.setItem("studySessions", JSON.stringify(updatedSessions));
+    } else {
+      // Create new session
+      const newSession: StudySession = {
+        id: Date.now().toString(),
+        date: new Date(),
+        cardsReviewed: 1,
+        correctAnswers: wasCorrect ? 1 : 0,
+        timeSpent: 0
+      };
+      const updatedSessions = [...studySessions, newSession];
+      setStudySessions(updatedSessions);
+      AsyncStorage.setItem("studySessions", JSON.stringify(updatedSessions));
+    }
+  };
+
+  const markCardAsUnknown = (cardId: string) => {
+    const updatedCards = flashcards.map(card => {
+      if (card.id === cardId) {
+        return {
+          ...card,
+          masteryLevel: 0, // Keep at low mastery level (needs review)
+          nextReviewDate: new Date(), // Review immediately
+          lastReviewed: new Date(),
+          reviewCount: card.reviewCount + 1,
+          isMastered: false // Ensure it's not marked as mastered
+        };
+      }
+      return card;
+    });
+    setFlashcards(updatedCards);
+    AsyncStorage.setItem("flashcards", JSON.stringify(updatedCards));
+    
+    // Update study session
+    updateStudySession(cardId, false);
+  };
+
+  // Get cards ready for review (spaced repetition)
+  const getCardsForReview = () => {
+    const now = new Date();
+    let cards = selectedChapter ? getChapterCards(selectedChapter) : flashcards;
+    
+    // Filter based on study mode
+    switch (studyMode) {
+      case 'bookmarked':
+        cards = cards.filter(card => card.isBookmarked && !card.isMastered);
+        break;
+      case 'difficult':
+        // Show cards that user has marked as "didn't know" (reviewed at least once and mastery level 0)
+        cards = cards.filter(card => card.reviewCount > 0 && card.masteryLevel === 0 && !card.isMastered);
+        break;
+      default:
+        // For "All Cards" mode, show all non-mastered cards
+        cards = cards.filter(card => !card.isMastered);
+        break;
+    }
+
+    // Return cards that are ready for review (not mastered and due for review)
+    return cards.filter(card => 
+      !card.isMastered && 
+      (!card.nextReviewDate || card.nextReviewDate <= now)
+    );
+  };
+
+  // Get filtered cards (for fallback when no review cards available)
   const getFilteredCards = () => {
     let cards = selectedChapter ? getChapterCards(selectedChapter) : flashcards;
     
     switch (studyMode) {
       case 'bookmarked':
-        return cards.filter(card => card.isBookmarked);
+        return cards.filter(card => card.isBookmarked && !card.isMastered);
       case 'difficult':
-        return cards.filter(card => card.difficulty === 'hard');
+        // Show cards that user has marked as "didn't know" (reviewed at least once and mastery level 0)
+        return cards.filter(card => card.reviewCount > 0 && card.masteryLevel === 0 && !card.isMastered);
       default:
-        return cards;
+        // For "All Cards" mode, show all non-mastered cards
+        return cards.filter(card => !card.isMastered);
     }
   };
+
+  // Initialize study cards when entering chapter details
+  useEffect(() => {
+    if (showChapterDetails) {
+      const reviewCards = getCardsForReview();
+      if (reviewCards.length === 0) {
+        // If no cards are due for review, show all cards
+        const allCards = getFilteredCards();
+        setStudyCards(allCards);
+      } else {
+        setStudyCards(reviewCards);
+      }
+      setCurrentCardIndex(0);
+      setShowAnswer(false);
+    }
+  }, [showChapterDetails, selectedChapter, studyMode]);
 
   // Reset card index when study mode changes
   useEffect(() => {
@@ -128,17 +263,59 @@ const App: React.FC = () => {
     try {
       await AsyncStorage.removeItem("flashcards");
       await AsyncStorage.removeItem("studySessions");
+      await AsyncStorage.removeItem("studyState");
       setFlashcards([]);
       setStudySessions([]);
+      setSelectedChapter(null);
+      setStudyMode('all');
+      setShowChapterDetails(false);
+      setCurrentCardIndex(0);
       loadData(); // This will reload the sample data
     } catch (error) {
       console.error("Error resetting data:", error);
     }
   };
 
+  // Save current study state
+  const saveStudyState = async () => {
+    try {
+      const studyState = {
+        selectedChapter,
+        studyMode,
+        showChapterDetails,
+        currentCardIndex
+      };
+      await AsyncStorage.setItem("studyState", JSON.stringify(studyState));
+    } catch (error) {
+      console.error("Error saving study state:", error);
+    }
+  };
+
+  // Load study state
+  const loadStudyState = async () => {
+    try {
+      const savedState = await AsyncStorage.getItem("studyState");
+      if (savedState) {
+        const state = JSON.parse(savedState);
+        setSelectedChapter(state.selectedChapter);
+        setStudyMode(state.studyMode || 'all');
+        setShowChapterDetails(state.showChapterDetails || false);
+        setCurrentCardIndex(state.currentCardIndex || 0);
+      }
+    } catch (error) {
+      console.error("Error loading study state:", error);
+    }
+  };
+
+  // Save study state when it changes
+  useEffect(() => {
+    saveStudyState();
+  }, [selectedChapter, studyMode, showChapterDetails, currentCardIndex]);
+
   // Load initial data
   useEffect(() => {
     loadData();
+    loadStudyState();
   }, []);
 
   const loadData = async () => {
@@ -147,12 +324,28 @@ const App: React.FC = () => {
       const savedSessions = await AsyncStorage.getItem("studySessions");
       
       if (savedCards) {
-        setFlashcards(JSON.parse(savedCards));
+        const parsedCards = JSON.parse(savedCards);
+        // Initialize spaced repetition fields for existing cards
+        const updatedCards = parsedCards.map((card: any) => ({
+          ...card,
+          isMastered: card.isMastered || false,
+          nextReviewDate: card.nextReviewDate ? new Date(card.nextReviewDate) : undefined,
+          masteryLevel: card.masteryLevel || 0,
+          lastReviewed: card.lastReviewed ? new Date(card.lastReviewed) : undefined
+        }));
+        setFlashcards(updatedCards);
       } else {
-        // Load from the JSON file
-        setFlashcards(flashcardsData.flashcards || []);
+        // Load from the JSON file and initialize spaced repetition fields
+        const initialCards = (flashcardsData.flashcards || []).map((card: any) => ({
+          ...card,
+          isMastered: false,
+          nextReviewDate: undefined,
+          masteryLevel: 0,
+          lastReviewed: undefined
+        }));
+        setFlashcards(initialCards);
         // Save to AsyncStorage for future use
-        await AsyncStorage.setItem("flashcards", JSON.stringify(flashcardsData.flashcards || []));
+        await AsyncStorage.setItem("flashcards", JSON.stringify(initialCards));
       }
       
       if (savedSessions) {
@@ -227,12 +420,22 @@ const App: React.FC = () => {
                         </View>
                         <View style={styles.chapterStats}>
                           <Text style={styles.chapterCardCount}>{chapterCards.length} cards</Text>
-                          {bookmarkedCount > 0 && (
-                            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-                              <Icon name="favorite" size={16} color="#FFD700" style={{ marginRight: 4 }} />
-                              <Text style={styles.bookmarkedCount}>{bookmarkedCount} bookmarked</Text>
-                            </View>
-                          )}
+                          <View style={styles.chapterStatsRow}>
+                            {bookmarkedCount > 0 && (
+                              <View style={{ flexDirection: 'row', alignItems: 'center', marginRight: 12 }}>
+                                <Icon name="favorite" size={16} color="#FFD700" style={{ marginRight: 4 }} />
+                                <Text style={styles.bookmarkedCount}>{bookmarkedCount}</Text>
+                              </View>
+                            )}
+                            {chapterCards.filter(card => card.masteryLevel <= 1).length > 0 && (
+                              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                                <Icon name="warning" size={16} color="#dc3545" style={{ marginRight: 4 }} />
+                                <Text style={styles.needReviewCount}>
+                                  {chapterCards.filter(card => card.masteryLevel <= 1).length} need review
+                                </Text>
+                              </View>
+                            )}
+                          </View>
                         </View>
                       </TouchableOpacity>
                     );
@@ -277,110 +480,164 @@ const App: React.FC = () => {
                     style={[styles.modeButton, studyMode === 'difficult' && styles.activeMode]}
                     onPress={() => setStudyMode('difficult')}
                   >
-                    <Text style={[styles.modeText, studyMode === 'difficult' && styles.activeModeText]}>Difficult</Text>
+                    <Text style={[styles.modeText, studyMode === 'difficult' && styles.activeModeText]}>Need Review</Text>
                   </TouchableOpacity>
                 </View>
 
                 {/* Flashcard Display */}
                 {(() => {
-                  const filteredCards = getFilteredCards();
-                  return filteredCards.length > 0 ? (
+                  return studyCards.length > 0 ? (
                     <View style={styles.cardContainer}>
-                      <View style={styles.card}>
-                        <Text style={styles.cardQuestion}>
-                          {filteredCards[currentCardIndex]?.question}
-                        </Text>
-                        
-                        {showAnswer && (
-                          <View style={styles.answerContainer}>
-                            <Text style={styles.answerLabel}>Answer:</Text>
-                            <Text style={styles.cardAnswer}>
-                              {filteredCards[currentCardIndex]?.answer}
-                            </Text>
+                      <ScrollView 
+                        style={styles.cardScrollView}
+                        showsVerticalScrollIndicator={false}
+                        contentContainerStyle={styles.cardScrollContent}
+                      >
+                        <View style={styles.card}>
+                          <Text style={styles.cardQuestion}>
+                            {studyCards[currentCardIndex]?.question}
+                          </Text>
+                          
+                          {showAnswer && (
+                            <View style={styles.answerContainer}>
+                              <Text style={styles.answerLabel}>Answer:</Text>
+                              <Text style={styles.cardAnswer}>
+                                {studyCards[currentCardIndex]?.answer}
+                              </Text>
+                            </View>
+                          )}
+
+                          <View style={styles.cardActions}>
+                            <TouchableOpacity 
+                              style={styles.bookmarkButton}
+                              onPress={() => {
+                                const currentCard = studyCards[currentCardIndex];
+                                const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
+                                const updatedCards = [...flashcards];
+                                updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
+                                setFlashcards(updatedCards);
+                                AsyncStorage.setItem("flashcards", JSON.stringify(updatedCards));
+                                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
+                              }}
+                            >
+                              <Icon 
+                                name={studyCards[currentCardIndex]?.isBookmarked ? 'favorite' : 'favorite-border'} 
+                                size={24} 
+                                color="#007AFF" 
+                              />
+                            </TouchableOpacity>
+
+                            <TouchableOpacity 
+                              style={styles.flipButton}
+                              onPress={() => {
+                                setShowAnswer(!showAnswer);
+                                Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                              }}
+                            >
+                              <Text style={styles.flipButtonText}>
+                                {showAnswer ? 'Hide Answer' : 'Show Answer'}
+                              </Text>
+                            </TouchableOpacity>
                           </View>
-                        )}
+                        </View>
+                      </ScrollView>
 
-                        <View style={styles.cardActions}>
+                      {/* Spaced Repetition Controls */}
+                      {showAnswer && (
+                        <View style={styles.spacedRepetitionControls}>
                           <TouchableOpacity 
-                            style={styles.bookmarkButton}
+                            style={[styles.knowledgeButton, styles.didntKnowButton]}
                             onPress={() => {
-                              const currentCard = filteredCards[currentCardIndex];
-                              const cardIndexInFullArray = flashcards.findIndex(card => card.id === currentCard.id);
-                              const updatedCards = [...flashcards];
-                              updatedCards[cardIndexInFullArray].isBookmarked = !updatedCards[cardIndexInFullArray].isBookmarked;
-                              setFlashcards(updatedCards);
-                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                            }}
-                          >
-                            <Icon 
-                              name={filteredCards[currentCardIndex]?.isBookmarked ? 'favorite' : 'favorite-border'} 
-                              size={24} 
-                              color="#007AFF" 
-                            />
-                          </TouchableOpacity>
-
-                          <TouchableOpacity 
-                            style={styles.flipButton}
-                            onPress={() => {
-                              setShowAnswer(!showAnswer);
+                              const currentCard = studyCards[currentCardIndex];
+                              markCardAsUnknown(currentCard.id);
+                              
+                              // Move to next card or shuffle
+                              if (currentCardIndex < studyCards.length - 1) {
+                                setCurrentCardIndex(currentCardIndex + 1);
+                              } else {
+                                // Shuffle remaining cards and start over
+                                const remainingCards = studyCards.filter((_, index) => index !== currentCardIndex);
+                                if (remainingCards.length > 0) {
+                                  const shuffled = remainingCards.sort(() => Math.random() - 0.5);
+                                  setStudyCards([...shuffled, currentCard]);
+                                  setCurrentCardIndex(0);
+                                }
+                              }
+                              setShowAnswer(false);
                               Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
                             }}
                           >
-                            <Text style={styles.flipButtonText}>
-                              {showAnswer ? 'Hide Answer' : 'Show Answer'}
-                            </Text>
+                            <Icon name="close" size={20} color="white" style={{ marginRight: 8 }} />
+                            <Text style={styles.knowledgeButtonText}>I Didn't Know</Text>
+                          </TouchableOpacity>
+
+                          <TouchableOpacity 
+                            style={[styles.knowledgeButton, styles.knewItButton]}
+                            onPress={() => {
+                              const currentCard = studyCards[currentCardIndex];
+                              markCardAsKnown(currentCard.id);
+                              
+                              // Remove card from study session and move to next
+                              const updatedStudyCards = studyCards.filter((_, index) => index !== currentCardIndex);
+                              if (updatedStudyCards.length > 0) {
+                                setStudyCards(updatedStudyCards);
+                                setCurrentCardIndex(Math.min(currentCardIndex, updatedStudyCards.length - 1));
+                              } else {
+                                // All cards mastered for this session
+                                setStudyCards([]);
+                                setCurrentCardIndex(0);
+                              }
+                              setShowAnswer(false);
+                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+                            }}
+                          >
+                            <Icon name="check" size={20} color="white" style={{ marginRight: 8 }} />
+                            <Text style={styles.knowledgeButtonText}>I Knew It</Text>
                           </TouchableOpacity>
                         </View>
-                      </View>
+                      )}
 
-                      {/* Navigation Controls */}
-                      <View style={styles.navigationControls}>
-                        <TouchableOpacity 
-                          style={[styles.navButton, currentCardIndex === 0 && styles.disabledButton]}
-                          onPress={() => {
-                            if (currentCardIndex > 0) {
-                              setCurrentCardIndex(currentCardIndex - 1);
-                              setShowAnswer(false);
-                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                            }
-                          }}
-                          disabled={currentCardIndex === 0}
-                        >
-                          <Text style={styles.navButtonText}>Previous</Text>
-                        </TouchableOpacity>
-
-                        <Text style={styles.cardCounter}>
-                          {currentCardIndex + 1} / {filteredCards.length}
+                      {/* Progress Indicator */}
+                      <View style={styles.progressContainer}>
+                        <Text style={styles.progressText}>
+                          {studyCards.length} cards remaining
                         </Text>
-
-                        <TouchableOpacity 
-                          style={[styles.navButton, currentCardIndex === filteredCards.length - 1 && styles.disabledButton]}
-                          onPress={() => {
-                            if (currentCardIndex < filteredCards.length - 1) {
-                              setCurrentCardIndex(currentCardIndex + 1);
-                              setShowAnswer(false);
-                              Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
-                            }
-                          }}
-                          disabled={currentCardIndex === filteredCards.length - 1}
-                        >
-                          <Text style={styles.navButtonText}>Next</Text>
-                        </TouchableOpacity>
+                        <View style={styles.progressBar}>
+                          <View 
+                            style={[
+                              styles.progressFill, 
+                              { width: `${((studyCards.length - currentCardIndex - 1) / studyCards.length) * 100}%` }
+                            ]} 
+                          />
+                        </View>
                       </View>
                     </View>
                   ) : (
                     <View style={styles.cardContainer}>
                       <View style={styles.card}>
                         <Text style={styles.cardQuestion}>
-                          No cards available in this mode
+                          🎉 Great job!
                         </Text>
                         <Text style={styles.cardAnswer}>
                           {studyMode === 'bookmarked' 
-                            ? 'Bookmark some cards to study them here' 
+                            ? 'You\'ve reviewed all your bookmarked cards!' 
                             : studyMode === 'difficult' 
-                            ? 'No difficult cards available' 
-                            : 'No cards available'}
+                            ? 'Great job! You\'ve reviewed all cards that need attention!' 
+                            : 'Congratulations! You\'ve mastered all cards in this chapter!'}
                         </Text>
+                        <TouchableOpacity 
+                          style={styles.restartButton}
+                          onPress={() => {
+                            const reviewCards = getCardsForReview();
+                            if (reviewCards.length > 0) {
+                              setStudyCards(reviewCards);
+                              setCurrentCardIndex(0);
+                              setShowAnswer(false);
+                            }
+                          }}
+                        >
+                          <Text style={styles.restartButtonText}>Start New Session</Text>
+                        </TouchableOpacity>
                       </View>
                     </View>
                   );
@@ -398,16 +655,17 @@ const App: React.FC = () => {
             {(() => {
               const bookmarkedCards = flashcards.filter(card => card.isBookmarked);
               return bookmarkedCards.length > 0 ? (
-                <FlatList
-                  data={bookmarkedCards}
-                  keyExtractor={(item) => item.id}
-                  renderItem={({ item }) => (
-                    <View style={styles.favoriteCard}>
+                <ScrollView 
+                  style={styles.favoritesScrollView}
+                  showsVerticalScrollIndicator={false}
+                >
+                  {bookmarkedCards.map((item) => (
+                    <View key={item.id} style={styles.favoriteCard}>
                       <Text style={styles.favoriteQuestion}>{item.question}</Text>
                       <Text style={styles.favoriteAnswer}>{item.answer}</Text>
                     </View>
-                  )}
-                />
+                  ))}
+                </ScrollView>
               ) : (
                 <View style={styles.emptyState}>
                   <Text style={styles.emptyStateText}>No bookmarked cards yet</Text>
@@ -419,7 +677,7 @@ const App: React.FC = () => {
         )}
 
         {currentView === 'dashboard' && (
-          <View style={styles.dashboardView}>
+          <ScrollView style={styles.dashboardScrollView} showsVerticalScrollIndicator={false}>
             <Text style={styles.sectionTitle}>Dashboard</Text>
             
             <View style={styles.statsContainer}>
@@ -442,23 +700,19 @@ const App: React.FC = () => {
             {studySessions.length > 0 && (
               <View style={styles.recentSessions}>
                 <Text style={styles.sectionSubtitle}>Recent Sessions</Text>
-                <FlatList
-                  data={studySessions.slice(-5)}
-                  keyExtractor={(item, index) => index.toString()}
-                  renderItem={({ item }) => (
-                    <View style={styles.sessionItem}>
-                      <Text style={styles.sessionDate}>
-                        {new Date(item.date).toLocaleDateString()}
-                      </Text>
-                      <Text style={styles.sessionStats}>
-                        {item.cardsReviewed} cards • {item.correctAnswers} correct
-                      </Text>
-                    </View>
-                  )}
-                />
+                {studySessions.slice(-5).map((item, index) => (
+                  <View key={index} style={styles.sessionItem}>
+                    <Text style={styles.sessionDate}>
+                      {new Date(item.date).toLocaleDateString()}
+                    </Text>
+                    <Text style={styles.sessionStats}>
+                      {item.cardsReviewed} cards • {item.correctAnswers} correct
+                    </Text>
+                  </View>
+                ))}
               </View>
             )}
-          </View>
+          </ScrollView>
         )}
 
         {currentView === 'settings' && (
@@ -783,6 +1037,14 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#6c757d',
   },
+  chapterStatsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  needReviewCount: {
+    fontSize: 12,
+    color: '#dc3545',
+  },
   chapterDetailHeader: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -846,6 +1108,89 @@ const styles = StyleSheet.create({
   settingButtonText: {
     fontSize: 16,
     color: '#495057',
+  },
+  // Spaced Repetition Styles
+  spacedRepetitionControls: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 20,
+    gap: 10,
+  },
+  knowledgeButton: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  didntKnowButton: {
+    backgroundColor: '#dc3545',
+  },
+  knewItButton: {
+    backgroundColor: '#28a745',
+  },
+  knowledgeButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  progressContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+  progressText: {
+    fontSize: 14,
+    color: '#6c757d',
+    marginBottom: 8,
+  },
+  progressBar: {
+    width: '100%',
+    height: 6,
+    backgroundColor: '#e9ecef',
+    borderRadius: 3,
+    overflow: 'hidden',
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: '#007AFF',
+    borderRadius: 3,
+  },
+  restartButton: {
+    backgroundColor: '#007AFF',
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 20,
+    marginTop: 20,
+    alignSelf: 'center',
+  },
+  restartButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  // Scrollable Content Styles
+  cardScrollView: {
+    flex: 1,
+    maxHeight: 400,
+  },
+  cardScrollContent: {
+    flexGrow: 1,
+  },
+  favoritesScrollView: {
+    flex: 1,
+  },
+  dashboardScrollView: {
+    flex: 1,
   },
 });
 
