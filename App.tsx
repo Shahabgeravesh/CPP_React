@@ -261,18 +261,49 @@ const App: React.FC = () => {
 
   const resetData = async () => {
     try {
+      // Clear all AsyncStorage data
       await AsyncStorage.removeItem("flashcards");
       await AsyncStorage.removeItem("studySessions");
       await AsyncStorage.removeItem("studyState");
+      
+      // Reset all state variables
       setFlashcards([]);
       setStudySessions([]);
       setSelectedChapter(null);
       setStudyMode('all');
       setShowChapterDetails(false);
       setCurrentCardIndex(0);
-      loadData(); // This will reload the sample data
+      setShowAnswer(false);
+      
+      // Load fresh data from the JSON file with all cards reset to initial state
+      const initialCards = (flashcardsData.flashcards || []).map((card: any) => ({
+        ...card,
+        isBookmarked: false,
+        isMastered: false,
+        nextReviewDate: undefined,
+        masteryLevel: 0,
+        lastReviewed: undefined,
+        reviewCount: 0
+      }));
+      
+      setFlashcards(initialCards);
+      
+      // Save the fresh data to AsyncStorage
+      await AsyncStorage.setItem("flashcards", JSON.stringify(initialCards));
+      
+      // Show confirmation
+      Alert.alert(
+        "Data Reset Complete",
+        "All study progress has been reset. You can now start fresh!",
+        [{ text: "OK" }]
+      );
     } catch (error) {
       console.error("Error resetting data:", error);
+      Alert.alert(
+        "Reset Error",
+        "There was an error resetting the data. Please try again.",
+        [{ text: "OK" }]
+      );
     }
   };
 
@@ -771,8 +802,35 @@ const App: React.FC = () => {
               style={styles.settingButton}
               onPress={() => {
                 Alert.alert(
-                  "About",
-                  "ASIS CPP Flashcards\n\nMaster the Certified Protection Professional exam with comprehensive flashcards covering all exam domains.\n\nVersion 1.0"
+                  "About ASIS CPP Flashcards",
+                  `📚 ASIS CPP Flashcards v1.0
+
+🎯 Master the Certified Protection Professional (CPP) exam with comprehensive flashcards covering all exam domains.
+
+📖 Study Content:
+• Security Principles and Practices (22%)
+• Business Principles and Practices (15%)
+• Investigations (9%)
+• Personnel Security (11%)
+• Physical Security (16%)
+• Crisis Management (13%)
+
+✨ Features:
+• 629 comprehensive flashcards
+• Spaced repetition learning
+• Chapter-based organization
+• Progress tracking dashboard
+• Bookmark system
+• Study session analytics
+• Offline functionality
+
+🎓 Exam Preparation:
+The CPP certification is the gold standard for security management professionals. This app helps you master the core concepts through active recall and spaced repetition.
+
+📱 Built with React Native & Expo
+
+Good luck with your CPP exam! 🚀`,
+                  [{ text: "OK" }]
                 );
               }}
             >
