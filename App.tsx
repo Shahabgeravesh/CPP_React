@@ -50,49 +50,49 @@ const App: React.FC = () => {
   const [selectedChapter, setSelectedChapter] = useState<string | null>(null);
   const [showChapterDetails, setShowChapterDetails] = useState(false);
 
-  // Define the 6 main chapters with their associated categories
+  // Define the 6 main chapters from ASIS CPP exam
   const chapters = [
     {
-      id: "security-management",
-      title: "Security Management",
-      description: "Security leadership and business principles",
-      categories: ["security Management", "Business Principles", "Leadership Style"],
+      id: "security-principles-practices",
+      title: "Security Principles and Practices (22%)",
+      description: "Security management, leadership, and business principles",
+      categories: ["security Management", "Business Principles", "Leadership Style", "Vision, Mission, Values"],
       icon: "🛡️"
     },
     {
-      id: "vision-mission-values",
-      title: "Vision, Mission & Values",
-      description: "Organizational strategy and culture",
-      categories: ["Vision, Mission, Values"],
-      icon: "🎯"
+      id: "business-principles-practices",
+      title: "Business Principles and Practices (15%)",
+      description: "Business operations, financial management, and organizational strategy",
+      categories: ["Business Principles", "Asset Protection", "security Standards"],
+      icon: "💼"
     },
     {
-      id: "asset-protection",
-      title: "Asset Protection",
-      description: "Physical and personnel security",
-      categories: ["Asset Protection", "Physical Security", "Personnel Security"],
-      icon: "🔒"
+      id: "investigations",
+      title: "Investigations (9%)",
+      description: "Investigation techniques, procedures, and documentation",
+      categories: ["Investigations"],
+      icon: "🔍"
     },
     {
-      id: "security-standards",
-      title: "Security Standards",
-      description: "Standards, ESRM, and risk assessment",
-      categories: ["security Standards", "ESRM", "Risk Assessment"],
-      icon: "📋"
+      id: "personnel-security",
+      title: "Personnel Security (11%)",
+      description: "Employee screening, background checks, and personnel protection",
+      categories: ["Personnel Security", "security Personnel"],
+      icon: "👥"
     },
     {
-      id: "security-awareness",
-      title: "Security Awareness",
-      description: "Training and awareness programs",
-      categories: ["security Awareness"],
-      icon: "📚"
+      id: "physical-security",
+      title: "Physical Security (16%)",
+      description: "Physical protection systems, access control, and security technology",
+      categories: ["Physical Security", "system Design"],
+      icon: "🏢"
     },
     {
-      id: "operations",
-      title: "Operations",
-      description: "Investigations, system design, and crisis management",
-      categories: ["Investigations", "system Design", "Crisis Management", "security Personnel"],
-      icon: "⚙️"
+      id: "crisis-management",
+      title: "Crisis Management (13%)",
+      description: "Emergency response, business continuity, and crisis communication",
+      categories: ["Crisis Management", "ESRM", "Risk Assessment", "security Awareness"],
+      icon: "🚨"
     }
   ];
 
