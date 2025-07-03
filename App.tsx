@@ -214,7 +214,12 @@ const App: React.FC = () => {
         break;
     }
 
-    // Return cards that are ready for review (not mastered and due for review)
+    // For "All Cards" mode, return all non-mastered cards (no date filtering)
+    if (studyMode === 'all') {
+      return cards;
+    }
+
+    // For other modes, return cards that are ready for review (not mastered and due for review)
     return cards.filter(card => 
       !card.isMastered && 
       (!card.nextReviewDate || card.nextReviewDate <= now)
