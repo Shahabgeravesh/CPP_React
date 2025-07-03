@@ -191,7 +191,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Inspired by the original ASIS CPP Flashcard iOS app
+
 - Built with React Native and Expo
 - Designed for ASIS CPP certification preparation
 
