@@ -5,10 +5,4 @@
 node_modules/
 .expo/
 dist/
-web-build/
-
-# Exclude any problematic directories
-node_modules/
-.expo/
-dist/
 web-build/ 
