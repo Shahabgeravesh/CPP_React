@@ -5,4 +5,7 @@
 node_modules/
 .expo/
 dist/
-web-build/ 
+web-build/
+
+# Temporarily exclude components to test build
+components/ 
