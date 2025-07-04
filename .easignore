@@ -1,0 +1,8 @@
+# Exclude GitHub workflows from EAS build
+.github/
+
+# Exclude any other problematic directories
+node_modules/
+.expo/
+dist/
+web-build/ 
