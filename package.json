@@ -13,22 +13,22 @@
     "submit:ios": "eas submit --platform ios"
   },
   "dependencies": {
-    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-async-storage/async-storage": "1.18.2",
     "@react-native-community/cli-server-api": "^18.0.0",
     "expo": "^49.0.0",
-    "expo-dev-client": "~5.2.4",
-    "expo-haptics": "~14.1.4",
-    "expo-linear-gradient": "~14.1.5",
-    "expo-status-bar": "~2.2.3",
-    "react": "19.0.0",
-    "react-dom": "^19.0.0",
-    "react-native": "0.79.5",
+    "expo-dev-client": "~2.4.13",
+    "expo-haptics": "~12.4.0",
+    "expo-linear-gradient": "~12.3.0",
+    "expo-status-bar": "~1.6.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-native": "0.72.10",
     "react-native-vector-icons": "^10.0.3",
-    "react-native-web": "^0.20.0"
+    "react-native-web": "~0.19.6"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
-    "@types/react": "~19.0.10",
+    "@types/react": "~18.2.14",
     "@types/react-native-vector-icons": "^6.4.18",
     "typescript": "~5.8.3"
   },
