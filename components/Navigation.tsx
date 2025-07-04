@@ -4,13 +4,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface NavigationProps {
   currentView: string;
-  onNavigate: (view: 'chapters' | 'favorites' | 'dashboard' | 'settings') => void;
+  onNavigate: (view: 'chapters' | 'dashboard' | 'settings') => void;
 }
 
 const Navigation: React.FC<NavigationProps> = ({ currentView, onNavigate }) => {
   const navItems = [
     { id: 'chapters', label: 'Chapters', icon: 'menu-book' },
-    { id: 'favorites', label: 'Favorites', icon: 'bookmark' },
     { id: 'dashboard', label: 'Dashboard', icon: 'analytics' },
     { id: 'settings', label: 'Settings', icon: 'tune' },
   ];

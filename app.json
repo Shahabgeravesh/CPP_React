@@ -43,22 +43,11 @@
     },
     "extra": {
       "eas": {
-        "projectId": "your-project-id-here"
+        "projectId": "ad3ebd08-312c-4643-a039-fbaf96541731"
       }
     },
     "owner": "shahabgeravesh",
     "description": "Master the ASIS Certified Protection Professional (CPP) exam with comprehensive flashcards covering all 6 exam domains. Study efficiently with organized chapters, bookmark important cards, and track your progress.",
-    "keywords": [
-      "ASIS",
-      "CPP",
-      "Certified Protection Professional",
-      "Security",
-      "Flashcards",
-      "Study",
-      "Exam Preparation",
-      "Security Management"
-    ],
-    "privacy": "public",
     "platforms": [
       "ios",
       "android",
