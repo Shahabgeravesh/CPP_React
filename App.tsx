@@ -17,8 +17,8 @@ import { LinearGradient } from "expo-linear-gradient";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Haptics from "expo-haptics";
 import Icon from "react-native-vector-icons/MaterialIcons";
-import Navigation from "./components/Navigation";
-import Settings from "./components/Settings";
+import Navigation from "./src/components/Navigation";
+import Settings from "./src/components/Settings";
 const flashcardsData = require("./assets/flashcards.json");
 
 // Types

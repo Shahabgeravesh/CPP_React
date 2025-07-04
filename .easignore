@@ -7,5 +7,8 @@ node_modules/
 dist/
 web-build/
 
-# Temporarily exclude components to test build
-components/ 
+# Exclude any problematic directories
+node_modules/
+.expo/
+dist/
+web-build/ 
