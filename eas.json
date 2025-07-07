@@ -15,8 +15,7 @@
     },
     "production": {
       "android": {
-        "buildType": "aab",
-        "targetSdkVersion": 35
+        "buildType": "app-bundle"
       }
     }
   },
